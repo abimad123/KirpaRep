@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kripa Home Solutions</title>
+<link rel="icon" type="image/png" sizes="128x128" href="/assets/img/logo.png" >
+    <link rel="stylesheet" href="/assets/prostyles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+   <header class="header">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/index.html" class="logo-link">
+        <img src="/assets/img/Kripalogo.png" alt="Kripa Home Solutions Logo" class="logo-img" style="height:70px; width:auto;">
+      </a>
+
+     
+    </div>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="/index.html" class="nav-link">Home</a>
+      <!-- Products Dropdown -->
+      <div class="nav-dropdown active">
+        <button class="dropdown-toggle">Products</button>
+        <div class="dropdown-content">
+          <a href="hardware-store.html">Hardware</a>
+          <a href="paint-store.html">Paints</a>
+          <a href="kitchen-store.html">Kitchen</a>
+        </div>
+      </div>
+      <!-- Stores Dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-toggle">Stores</button>
+        <div class="dropdown-content">
+          <a href="hardware-store.html">Main Store</a>
+          <a href="paint-store.html">Paint Store</a>
+          <a href="paint-store.html">Kitchen Store</a>
+        </div>
+      </div>
+      <a href="/contact.html" class="nav-link">Contact</a>
+      <a href="https://wa.me/919876543210" class="nav-link whatsapp-link" target="_blank"> WhatsApp</a>
+    </nav>
+     <button class="setting-btn" id="navToggle">
+  <span class="bar bar1"></span>
+  <span class="bar bar2"></span>
+  <span class="bar bar1"></span>
+</button>
+  </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="/index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="hardware-store.html">Hardware</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Ceiling Fan</span>
+                </nav>
+                <h1 class="hero-title">Ceiling Fan</h1>
+                <p class="hero-subtitle">Professional grade tools for every project</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter & Sort Bar -->
+    <section class="filter-sort-bar" id="filterBar">
+        <div class="container">
+            <div class="filter-left">
+                <div class="filter-group">
+                    <button class="filter-btn" id="brandFilter">
+                        <i class="fas fa-filter"></i>
+                        Brand
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="filter-dropdown" id="brandDropdown">
+                        <h6 style="font-weight: bold; margin-bottom: 1rem; color: #374151;">Select Brands</h6>
+                        <label><input type="checkbox" value="BOSCH"> BOSCH</label>
+                        <label><input type="checkbox" value="Makita"> Makita</label>
+                        <label><input type="checkbox" value="Stanley"> Stanley</label>
+                        <label><input type="checkbox" value="DeWalt"> DeWalt</label>
+                        <label><input type="checkbox" value="Asian Paints"> Asian Paints</label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <button class="filter-btn" id="priceFilter">
+                        <i class="fas fa-rupee-sign"></i>
+                        Price Range
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="filter-dropdown" id="priceDropdown">
+                        <h6 style="font-weight: bold; margin-bottom: 1rem; color: #374151;">Price Range</h6>
+                        <label><input type="checkbox" value="0-2000"> Under ₹2,000</label>
+                        <label><input type="checkbox" value="2000-5000"> ₹2,000 - ₹5,000</label>
+                        <label><input type="checkbox" value="5000-10000"> ₹5,000 - ₹10,000</label>
+                        <label><input type="checkbox" value="10000-999999"> Above ₹10,000</label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <button class="filter-btn" id="availabilityFilter">
+                        <i class="fas fa-check-circle"></i>
+                        Availability
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="filter-dropdown" id="availabilityDropdown">
+                        <h6 style="font-weight: bold; margin-bottom: 1rem; color: #374151;">Availability</h6>
+                        <label><input type="checkbox" value="In Stock"> In Stock</label>
+                        <label><input type="checkbox" value="Limited"> Limited Stock</label>
+                        <label><input type="checkbox" value="Out of Stock"> Out of Stock</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-right">
+                <div class="product-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search in category..." id="categorySearch">
+                </div>
+                
+                <select class="sort-dropdown" id="sortSelect">
+                    <option value="popularity">Sort by Popularity</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="new">New Arrivals</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section"> 
+  <div class="container">
+    
+    <!-- Header -->
+    <div class="products-header">
+      <h2>Our Products</h2>
+      <span class="products-count">Showing 1 of 2 products</span>
+    </div>
+    
+    <!-- Product Grid -->
+    <div class="products-grid">
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://www.vguard.in/uploads/product/airwiz-light-black.jpg" alt="ceiling-fans">
+          <span class="product-badge sale">Sale</span>
+        </div>
+        <div class="product-info">
+          <span class="product-brand">V-Guard</span>
+          <h3 class="product-name">AIRWIZ LIGHT</h3>
+          <p class="product-description">A range of high-speed premium BLDC underlight fans from V-Guard. The 6W LED underlight brings soft, ambient glow that fills the room like moonlight on a quiet night</p>
+          <div class="product-price">
+            <span class="current-price">₹3,000</span>
+            <span class="original-price">₹4500</span>
+            <span class="price-save">Save 25%</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-badge limited">availabile</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-detail.html" class="btn btn-primary">View Details</a>
+            
+          </div>
+        </div>
+      </div>
+      <!-- Add more static product cards here -->
+      
+    </div>
+    
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="page-btn prev-btn" disabled>
+        <i class="fas fa-chevron-left"></i> Previous
+      </button>
+      <div class="page-numbers">
+        <button class="page-number active">1</button>
+        <button class="page-number">2</button>
+        <!-- <button class="page-number">3</button>
+        <span class="page-ellipsis">...</span>
+        <button class="page-number">10</button> -->
+      </div>
+      <button class="page-btn next-btn">
+        Next <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h3>Need Help Choosing the Right Products?</h3>
+                    <p>Visit our store for expert advice and bulk deals. Our experienced team is here to help you find exactly what you need.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="tel:+919876543210" class="cta-btn primary">
+                        <i class="fas fa-phone"></i>
+                        Call Now
+                    </a>
+                    <a href="https://wa.me/919876543210" class="cta-btn secondary">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kripa Home Solutions</h3>
+                    <p>Your trusted partner for quality hardware and home décor solutions in Kollam, Kerala.</p>
+                    <p>We specialize in providing premium quality products at affordable prices, ensuring every customer gets the best value for their investment in home improvement.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Navigation</h4>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                        <li><a href="hardware-store.html">Products</a></li>
+                        <li><a href="hardware-store.html">Hardware</a></li>
+                        <li><a href="kitchen-store.html">Kitchen</a></li>
+                        <li><a href="paint-store.html">Paints</a></li>
+                  
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Branches</h4>
+                    <ul>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/p7cphN3g3XNhTuUQ8">Our Main Branch</a></li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/ouiWNDZ57jL2GeXWA">Our Paint Store</a></li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/QuR4ChLmLo3SdTtcA">Our Bath & Kitchen Store</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg> +91 86061 23467</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-440 160-640v400h360v80H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v280h-80v-200L480-440Zm0-80 320-200H160l320 200ZM760-40l-56-56 63-64H600v-80h167l-64-64 57-56 160 160L760-40ZM160-640v440-240 3-283 80Z"/></svg>Kripaelectricalsputhoor@gmail.com</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-200v-440 440-15 15Zm0 80q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v171q-18-13-38-22.5T800-508v-132H160v440h283q3 21 9 41t15 39H160Zm240-600h160v-80H400v80ZM720-40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm20-208v-112h-40v128l86 86 28-28-74-74Z"/></svg>Mon-Sat: 9AM-8PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kripa Home Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="/assets/prohardscript.js"></script>
+</body>
+</html>

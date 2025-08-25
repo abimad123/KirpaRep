@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kripa Home Solutions</title>
+<link rel="icon" type="image/png" sizes="128x128" href="assets/img/logo.png" >
+  <!-- SEO Meta Tags -->
+<meta name="description" content="Kripa Home Solutions in Kollam offers top-quality hardware, home decor, and building materials at affordable prices. Trusted by homeowners and builders in Kerala.">
+<meta name="keywords" content="hardware store Kollam, home decor Kerala, building materials, home improvement, quality hardware">
+<!-- Open Graph Tags for Social Media Sharing -->
+<meta property="og:title" content="Kripa Home Solutions - Quality Hardware & Home Décor in Kollam">
+<meta property="og:description" content="Find trusted hardware, décor, and building materials at affordable prices in Kerala. Visit Kripa Home Solutions today.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+  <script src="https://cdn.jsdelivr.net/npm/embla-carousel/embla-carousel.umd.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+  import {query, orderBy } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+  // Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyC71wc-JkZ5ZWiD4aYAuv0Y3v_YOT_FADY",
+  authDomain: "kripahomesolutions-0001.firebaseapp.com",
+  projectId: "kripahomesolutions-0001",
+  storageBucket: "kripahomesolutions-0001.appspot.com",
+  messagingSenderId: "218320673308",
+  appId: "1:218320673308:web:107cb7040ee424553d5dd9",
+  measurementId: "G-RLE4404QMG"
+};
+
+
+  // Init
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+const track = document.getElementById('offer-container');
+const prevBtn = document.querySelector('.offers-carousel-navigation .prev');
+const nextBtn = document.querySelector('.offers-carousel-navigation .next');
+const paginationContainer = document.querySelector('.offers-carousel-pagination');
+
+let currentSlide = 0;
+let totalSlides;
+let autoplayInterval;
+
+// Function to generate the HTML for a single offer card
+function createOfferCardHTML(offer) {
+  return `
+    <div class="offer-card">
+      <a href="${offer.link || '#'}" target="_blank">
+        <img src="${offer.image}" alt="${offer.title}" class="offer-image">
+      </a>
+      <div class="offer-details">
+        <h3>
+          <a href="${offer.link || '#'}" target="_blank">${offer.title}</a>
+        </h3>
+        <h4>
+          <span class="offer-description">${offer.description}</span>
+        </h4>
+        <div class="offer-footer">
+          <h5><span class="offer-discount">${offer.discount} OFF</span></h5>
+          <small>Valid until: ${offer.validUntil}</small>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Function to fetch data and build the carousel
+async function loadOffers() {
+  try {
+    const q = query(collection(db, "offers"));
+    const querySnapshot = await getDocs(q);
+    
+    let offersHTML = '';
+    querySnapshot.forEach((doc) => {
+      const offer = doc.data();
+      offersHTML += createOfferCardHTML(offer);
+    });
+
+    track.innerHTML = offersHTML;
+
+    const offerCards = document.querySelectorAll('.offer-card');
+    totalSlides = offerCards.length;
+
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      dot.addEventListener('click', () => goToSlide(i));
+      paginationContainer.appendChild(dot);
+    }
+
+    updateCarousel();
+    startAutoplay();
+
+  } catch (error) {
+    console.error("Error loading offers:", error);
+  }
+}
+
+// Function to move to a specific slide
+function goToSlide(index) {
+  currentSlide = index;
+  const card = document.querySelector('.offer-card');
+  if (card) {
+    const cardWidth = card.offsetWidth;
+    const offset = -currentSlide * (cardWidth + 32); 
+    track.style.transform = `translateX(${offset}px)`;
+  }
+  updateCarousel();
+}
+
+// Function to update the active dot
+function updateCarousel() {
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentSlide);
+  });
+}
+
+// Start the autoplay
+function startAutoplay() {
+  clearInterval(autoplayInterval);
+  autoplayInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    goToSlide(currentSlide);
+  }, 3000);
+}
+
+// Event listeners for navigation
+prevBtn.addEventListener('click', () => {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  goToSlide(currentSlide);
+  startAutoplay();
+});
+
+nextBtn.addEventListener('click', () => {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  goToSlide(currentSlide);
+  startAutoplay();
+});
+
+document.addEventListener('DOMContentLoaded', loadOffers);
+
+
+
+
+const reelGallery = document.getElementById('reelGallery'); 
+
+async function loadInstagramReels() {
+  // Create a query ordered by createdAt descending
+  const reelsQuery = query(
+    collection(db, "instagramReels"),
+    orderBy("createdAt", "desc")
+  );
+
+  const querySnapshot = await getDocs(reelsQuery);
+  reelGallery.innerHTML = '';
+
+  querySnapshot.forEach((doc) => {
+    const reel = doc.data();
+    reelGallery.innerHTML += `
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="${reel.url}"
+        data-instgrm-version="14">
+      </blockquote>
+    `;
+  });
+
+  // Re-render Instagram embeds safely
+  if (window.instgrm && window.instgrm.Embeds) {
+    window.instgrm.Embeds.process();
+  }
+}
+
+loadInstagramReels();
+
+
+
+</script>
+
+</head>
+
+<body style="background-color: #f4f4f4;">
+  <header class="header">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="index.html" class="logo-link">
+        <img src="assets/img/Kripalogo.png" alt="Kripa Home Solutions Logo" class="logo-img" style="height:70px; width:auto;" data-aos="zoom-in-up">
+      </a>
+
+     
+    </div>
+
+    <nav class="nav-menu" id="navMenu" >
+      <a href="index.html" class="nav-link active">Home</a>
+
+      <!-- Products Dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-toggle">Products</button>
+        <div class="dropdown-content">
+          <a href="Stores/hardware-store.html">Hardware</a>
+          <a href="Stores/paint-store.html">Paints</a>
+          <a href="Stores/kitchen-store.html">Kitchen</a>
+        </div>
+      </div>
+
+      <!-- Stores Dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-toggle">Stores</button>
+        <div class="dropdown-content">
+          <a href="Stores/hardware-store.html">Main Store</a>
+          <a href="Stores/paint-store.html">Paint Store</a>
+          <a href="Stores/paint-store.html">Kitchen Store</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="nav-link">Contact</a>
+
+   <a href="https://wa.me/919876543210" class="nav-link whatsapp-link" target="_blank"> WhatsApp</a>
+      
+    </nav>
+     <button class="setting-btn" id="navToggle">
+  <span class="bar bar1"></span>
+  <span class="bar bar2"></span>
+  <span class="bar bar1"></span>
+</button>
+  </div>
+</header>
+
+    <main>
+        <!-- Hero Section -->
+     <section class="hero">
+
+      <div class="hero-container">
+
+        <div class="hero-content">
+
+          <h1 class="hero-title" data-aos="fade-right">Transform Your Home with Quality Solutions</h1>
+
+          <p class="hero-subtitle" data-aos="fade-right">Premium hardware and home décor products at unbeatable prices. Your trusted partner for all home improvement needs in Kollam, Kerala.</p>
+
+        
+
+ <div class="button-container" >
+
+<a href="/Stores/hardware-store.html" style="font-weight: bolder; text-decoration: none; color: inherit;">
+
+ <button class="cssbuttons-io-button" data-aos="zoom-in-up">
+
+  View Now
+
+  <div class="icon">
+
+   <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+    <path d="M0 0h24v24H0z" fill="none"></path>
+
+    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+
+   </svg>
+
+  </div>
+
+ </button>
+
+</a>
+
+<a href="contact.html" style="font-weight: bolder; text-decoration: none; color: inherit;">
+
+<button class="cssbuttons-io-button" data-aos="zoom-in-up">
+
+ Visit Us
+
+<div class="icon">
+<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+
+ <path d="M0 0h24v24H0z" fill="none"></path>
+
+<path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor" ></path>
+
+ </svg>
+
+ </div>
+
+</button>
+
+</a>
+
+ </div>
+
+
+
+ </div>
+
+<div class="hero-image">
+
+ <img src="assets/img/build1.jpg" alt="Modern Home Interior" data-aos="zoom-in-up" >
+
+</div>
+
+</div>
+
+</section> 
+
+
+ <!-- Offers Section -->
+<section id="offers" class="offers-section">
+  <h2 data-aos="zoom-in-up">Exclusive Offers</h2>
+  <div class="offers-carousel-container" data-aos="zoom-in-up">
+    <div class="offers-carousel-track" id="offer-container">
+      </div>
+    <div class="offers-carousel-navigation">
+    
+      <button class="nav-btn prev"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+      </svg>
+    </button>
+      <button class="nav-btn next"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M400-240 640-480 400-720l-56 56 184 184-184 184 56 56Z"/>
+      </svg>
+    </button>
+
+    </div>
+    <div class="offers-carousel-pagination">
+      </div>
+  </div>
+</section>
+
+
+<style>
+  .offers-section {
+    background-color: #f4f4f4;
+    
+  }
+  .offers-section h2 {
+    
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 4rem;
+  letter-spacing: 0.5px;
+}
+/* Container for the entire offers carousel */
+/* Container for the entire offers carousel */
+.offers-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* The track for the offer cards */
+.offers-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  scroll-snap-type: x mandatory;
+}
+
+/* Individual offer card styling - THIS IS THE MOST IMPORTANT PART */
+.offer-card {
+  /* Set a fixed size for the card */
+  min-width: 320px;
+  max-width: 320px;
+  height: auto; /* Adjust height based on content */
+  
+  box-sizing: border-box;
+  margin: 16px; /* A little gap between cards */
+  flex-shrink: 0;
+  
+  /* Styling to match your design */
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Styling for the image within the card */
+.offer-image {
+  width: 100%;
+  height: 200px; /* Fixed height for a consistent look */
+  object-fit: cover; /* Ensures the image fills the space without distortion */
+  display: block;
+}
+
+/* Styling for the text content */
+.offer-details {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows this section to grow and push the footer down */
+}
+
+.offer-details h3, .offer-details h4, .offer-details h5 {
+  margin: 0.5rem 0;
+}
+
+.offer-description {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Styling for the bottom section (discount and validUntil) */
+.offer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* This pushes the footer to the bottom of the card */
+  padding: 0 1.5rem 1.5rem;
+}
+.offer-discount {
+  display: inline-block;
+  padding: 1rem 0.5rem;
+  background: linear-gradient(to right, #ff6a6a, #ff4d4d);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+.offer-details small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #888;
+}
+
+/* Navigation buttons (arrows) */
+.offers-carousel-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+.nav-btn {
+   background: #0074e7;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  cursor: pointer;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pagination dots */
+.offers-carousel-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}
+</style>
+
+<section class="categories-section">
+  <h2 class="main-heading">Shop by Category</h2>
+
+  <!-- Hardware Block -->
+  <div class="category-block">
+    <div class="category-header">
+      <span class="icon"></span>
+      <h3>Hardware</h3>
+    </div>
+    <!-- Left Scroll Button -->
+<div class="category-scroll-wrapper">
+    <button class="scroll-btn left" onclick="scrollGallery(this, -1)">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+      </svg>
+    </button>
+
+    <!-- Scrollable Categories -->
+   
+<div class="categories-scroll" id="catGallery">
+
+      <div class="category-scroll-card">
+        <img src="https://www.vguard.in/uploads/subcategory/pario-gold1-sm.jpg" alt="Ceiling Fans">
+        <h3>Ceiling Fans</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=ceiling-fans" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://i.pinimg.com/736x/b6/fe/28/b6fe286e849ddb118321d39f019f311b.jpg" alt="Modular Switches">
+        <h3>Modular Switches</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=switches" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/wires&cables.png" alt="Wires & Cables">
+        <h3>Wires & Cables</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=wires&cables" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://www.vguard.in/uploads/subcategory/pario-gold1-sm.jpg" alt="Sanitaryware">
+        <h3>Sanitaryware</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=sanitaryware" class="btn">View More</a>
+      </div>
+
+       <div class="category-scroll-card">
+        <img src="assets/img/categories/ceilingLight.png" alt="Ceiling Lights" style="width: auto;">
+        <h3>Ceiling Lights</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=ceilinglights" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://www.vguard.in/uploads/subcategory/pario-gold1-sm.jpg" alt="Water Heaters">
+        <h3>Water Heaters</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=waterheaters" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/Pipes&Fittings.png" alt="Pipes & Fittings">
+        <h3>Pipes & Fittings</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=pipes&fittings" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/ElectricalTools.png" alt="Electrical Tools">
+        <h3>Electrical Tools</h3>
+        <a href="Stores/products.html?category=hardware&subcategory=electricaltools" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card view-more">
+        <h3>View More</h3>
+        <a href="Stores/hardware-store.html" class="btn">Explore All</a>
+      </div>
+    </div>
+    
+<button class="scroll-btn right" onclick="scrollGallery(this, 1)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M400-240 640-480 400-720l-56 56 184 184-184 184 56 56Z"/>
+      </svg>
+    </button>
+  </div>
+  </div>
+
+
+  <!-- Kitchen Block -->
+  <div class="category-block">
+    <div class="category-header">
+      <span class="icon"></span>
+      <h3>Kitchen</h3>
+    </div>
+    
+<div class="category-scroll-wrapper">
+    <button class="scroll-btn left" onclick="scrollGallery('kitchenGallery', -1)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+      </svg>
+    </button>
+
+    <div class="categories-scroll" id="kitchenGallery">
+      <div class="category-scroll-card">
+        <img src="https://www.crompton.co.in/cdn/shop/files/1_4f509f3c-c0c3-43d8-b6aa-0585601591cc.png?v=1706773880&width=1100" alt="Kitchen Chimneys">
+        <h3>Kitchen Chimneys</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=Chimneys" class="btn">View More</a>
+      </div>
+
+       <div class="category-scroll-card">
+        <img src="assets/img/categories/gasstove.png" alt="Gas Stoves">
+        <h3>Gas Stoves</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=gasstoves" class="btn">View More</a>
+      </div>
+
+       <div class="category-scroll-card">
+        <img src="assets/img/categories/waterpurifies.png" alt="Water Purifiers">
+        <h3>Water Purifiers</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=waterpurifiers" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/dishwashers.png" alt="Dishwashers">
+        <h3>Dishwashers</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=dishwashers" class="btn">View More</a>
+      </div>
+
+      
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/dishwashers.png" alt="Dishwashers">
+        <h3>Dishwashers</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=dishwashers" class="btn">View More</a>
+      </div>
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/dishwashers.png" alt="Dishwashers">
+        <h3>Dishwashers</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=dishwashers" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/dishwashers.png" alt="Dishwashers">
+        <h3>Dishwashers</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=dishwashers" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="assets/img/categories/dishwashers.png" alt="Dishwashers">
+        <h3>Dishwashers</h3>
+        <a href="kitchen-store.html?category=kitchen&subcategory=dishwashers" class="btn">View More</a>
+      </div>
+      <div class="category-scroll-card view-more">
+        <h3>+ View More</h3>
+        <a href="categories.html" class="btn">Explore All</a>
+      </div>
+    </div>
+    
+<button class="scroll-btn right" onclick="scrollGallery('kitchenGallery', 1)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M400-240 640-480 400-720l-56 56 184 184-184 184 56 56Z"/>
+      </svg>
+    </button>
+  </div>
+  </div>
+
+  <!-- Paint Block -->
+ <div class="category-block">
+    <div class="category-header">
+      <span class="icon"></span>
+      <h3>Paint</h3>
+    </div>
+<div class="category-scroll-wrapper">
+    <button class="scroll-btn left" onclick="scrollGallery('paintGallery', -1)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+      </svg>
+    </button>
+    <div class="categories-scroll" id="paintGallery">
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+
+      <div class="category-scroll-card">
+        <img src="https://imgs.search.brave.com/J3ZSIbanOF1EZhfJL7-lNupZ2Zsis5nV4qKA84AtykE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYXNpYW5wYWlu/dHMuY29tL2NvbnRl/bnQvZGFtL2FzaWFu/X3BhaW50cy9wcm9k/dWN0cy9wYWNrc2hv/dHMvaW50ZXJpb3It/d2FsbHMtdHJhY3Rv/ci1zcGFyYy1hc2lh/bi1wYWludHMucG5n" alt="Paint">
+        <h3>Interior Wall  Paint</h3>
+        <a href="paint-store.html?category=paint" class="btn">View More</a>
+      </div>
+      <div class="category-scroll-card view-more">
+        <h3>+ View More</h3>
+        <a href="categories.html" class="btn">Explore All</a>
+      </div>
+    </div>
+
+    
+    
+<button class="scroll-btn right" onclick="scrollGallery('paintGallery', 1)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M400-240 640-480 400-720l-56 56 184 184-184 184 56 56Z"/>
+      </svg>
+    </button>
+  </div>
+  </div>
+</section>
+
+
+
+<style>
+.categories-section {
+  padding: 60px 20px;
+  background: #f9f9f9;
+}
+
+.main-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.category-block {
+  margin-bottom: 50px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.category-header .icon {
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+
+.category-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex: 1;
+}
+
+.category-header .view-all {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.category-scroll-wrapper {
+  position: relative;
+}
+
+.categories-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.categories-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-scroll-card {
+  position: relative;
+  flex: 0 0 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.category-scroll-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.category-scroll-card:hover {
+  transform: translateY(-6px);
+}
+
+.category-scroll-card .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+}
+
+.category-scroll-card h4 {
+  margin: 0 0 8px;
+}
+
+.category-scroll-card .btn {
+  background: #ff6b35;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 10px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.scroll-btn.left { left: -15px; }
+.scroll-btn.right { right: -15px; }
+
+@media (max-width: 768px) {
+  .scroll-btn { display: none; }
+  .categories-scroll { padding-left: 10px; }
+}
+
+  </style>
+
+
+       <!-- Product Categories -->
+<section class="categories">
+  <div class="container">
+    <h2 class="section-title">Our Product Categories</h2>
+    <p class="section-subtitle">
+      From essential hardware to elegant décor, we have everything you need to create your perfect home
+    </p>
+
+    <div class="categories-grid">
+      <!-- Hardware & Tools -->
+      <div class="category-card" data-aos="zoom-in-up">
+        <div class="category-card-header">
+          <h3 class="category-title">Hardware & Tools</h3>
+        </div>
+        <p class="category-desc">
+          Professional-grade tools and hardware essentials for every project
+        </p>
+        <a href="Stores/hardware-store.html" class="btn btn-outline category-btn" style="font-weight: bolder;">View Products</a>
+      </div>
+
+      <!-- Electrical Supplies -->
+      <div class="category-card" data-aos="zoom-in-up">
+        <div class="category-card-header">
+          <h3 class="category-title">Kitchen Supplies</h3>
+          <span class="category-count-badge">1200+ Products</span>
+        </div>
+        <p class="category-desc">
+          Complete range of Gas Stoves, Dishwashers, Chimneys, and lighting solutions
+        </p>
+        <a href="Stores/kitchen-store.html" class="btn btn-outline category-btn" style="font-weight: bolder;">View Products</a>
+      </div>
+
+      <!-- Plumbing Solutions -->
+      <div class="category-card" data-aos="zoom-in-up">
+        <div class="category-card-header">
+          <h3 class="category-title">Painting Solutions</h3>
+          <span class="category-count-badge">650+ Products</span>
+        </div>
+        <p class="category-desc">
+          Quality paints, , and  for modern homes
+        </p>
+        <a href="Stores/paint-store.html" class="btn btn-outline category-btn" style="font-weight: bolder;">View Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <style>
+      .categories {
+  padding: 60px 20px;
+ background: linear-gradient(135deg, #000000, #3498db);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #f4f4f4;
+}
+
+.section-subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.category-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-title {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #333;
+}
+
+.category-count-badge {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.category-desc {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 15px 0;
+}
+
+.category-btn {
+  text-align: center;
+  padding: 10px 15px;
+  border: 1px solid #007bff;
+  color: #007bff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.category-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+        </style>
+
+        <!-- Why Choose Us -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title" style="color:#000000">Why Choose Kripa Home Solutions?</h2>
+                 <p class="section-subtitle" style="color:#000000">Follow our journey and see our latest projects on Instagram</p>
+                <div class="features-grid">
+                    <div class="feature-card" data-aos="zoom-in-up">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Premium Quality</h3>
+                        <p>We source only the finest materials and products from trusted brands to ensure lasting durability.</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in-up">
+                        <div class="feature-icon">💰</div>
+                        <h3>Best Prices</h3>
+                        <p>Competitive pricing without compromising on quality. Get the best value for your investment.</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in-up">
+                        <div class="feature-icon">🚚</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick and reliable delivery service across Kollam and surrounding areas.</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in-up">
+                        <div class="feature-icon">👨‍🔧</div>
+                        <h3>Expert Support</h3>
+                        <p>Our experienced team provides professional advice and after-sales support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section class="slider02 mbr-embla shapem5" id="brand-partners">
+    <div class="container" style="max-width: 100%;">
+        <div class="row">
+            <div class="col-12">
+                <div class="title-wrapper">
+                    <h2 class="section-title" style="text-align:center; color: #000000;">
+                        Brand's We offers
+                    </h2>
+                    <p class="section-subtitle" style="color: #000000">
+      From essential hardware to elegant décor, we have everything you need to create your perfect home
+    </p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="embla" id="brandCarousel">
+                    <div class="embla__viewport">
+                        <div class="embla__container">
+                            <div class="embla__slide">
+                                <img src="https://www.luker.in/static/media/Luker_nav_logo-1.a8ee57b82c3eafa2dcd6.jpg" alt="Brand 1">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://www.rrkabel.com/wp-content/uploads/2024/08/RR-Kabel-logo.svg" alt="Brand 1">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://havells.com/media/logo/stores/1/Havells_Logo.svg" alt="Brand 3">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://www.cera-india.com/themes/cera/assets/images/cera-logo-desk.gif" alt="Brand 4">
+                            </div>
+                             <div class="embla__slide">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/American_Standard_logo_2017.svg/500px-American_Standard_logo_2017.svg.png" alt="Brand 5">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Grohe.svg/375px-Grohe.svg.png" alt="Brand 6">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://cdn.brandfetch.io/idIgpxgnOl/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1749040189777" alt="Brand 2">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Legrand.svg/1920px-Legrand.svg.png?20091220174938" alt="Brand 2">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Berger.png/500px-Berger.png" alt="Brand 3">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/Asian_paints_logo.svg/375px-Asian_paints_logo.svg.png" alt="Brand 4">
+                            </div>
+                            <div class="embla__slide">
+                                <img src="https://www.vguard.in/ui/client/images/vguard-logo.jpg" alt="Brand 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 🌟 Customer Testimonials Section -->
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-subtitle">Real experiences from people who trust us</p>
+
+    <div class="testimonial-grid">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="assets/img/userlogo.png" alt="Customer 1" class="customer-img">
+          <div>
+            <h3>Ramesh Kumar</h3>
+            <p>Google Reviewer</p>
+          </div>
+        </div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          “Amazing service!”
+        </p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="assets/img/userlogo.png" alt="Customer 2" class="customer-img">
+          <div>
+            <h3>Priya Sharma</h3>
+            <p>Google Reviewer</p>
+          </div>
+        </div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          “Amazing service!”
+        </p>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="assets/img/userlogo.png" alt="Customer 3" class="customer-img">
+          <div>
+            <h3>Arjun Nair</h3>
+            <p>Google Reviewer</p>
+          </div>
+        </div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          “Amazing service!”
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+        <!-- Instagram Reels Section -->
+<script>
+  function scrollGallery(direction) {
+    const gallery = document.getElementById('reelGallery');
+    const scrollAmount = 260;
+
+    gallery.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+//hardware gallery scroll function
+function scrollGallery(button, direction) {
+  const wrapper = button.closest('.category-scroll-wrapper');
+  const gallery = wrapper.querySelector('.categories-scroll');
+  if (!gallery) return; // Prevent error if not found
+
+  const scrollAmount = 300;
+  gallery.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+
+// Kitchen and paint gallery scroll function
+function scrollGallery(galleryId, direction) {
+  const gallery = document.getElementById(galleryId);
+  const scrollAmount = 300;
+  gallery.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+</script>
+
+<!-- Reels Section -->
+<section class="instagram-reels">
+  <div class="container">
+    <h2 class="section-title" style="color:#000000">See Us in Action</h2>
+    <p class="section-subtitle" style="color:#000000">Follow our journey and see our latest projects on Instagram</p>
+
+    <div class="reels-container">
+      <button class="scroll-btn left" onclick="scrollGallery(-1)">
+         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>            
+      </button>
+
+      <div class="reels-row" id="reelGallery">
+        <!-- Reels will be loaded here -->
+      </div>
+
+      <button class="scroll-btn right" onclick="scrollGallery(1)">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+      </button>
+    </div>
+
+
+    
+
+  </div>
+
+  <script async src="//www.instagram.com/embed.js"></script>
+</section>
+
+
+<section class="social-media">
+  <div class="container">
+  <h2 class="section-title">Social media</h2>
+<ul class="wrapper"> 
+    <br>
+  <a href="https://www.facebook.com/kripahomesolutions" target="_blank">
+  <li class="icon facebook">
+    <span class="tooltip">Facebook</span>
+    <svg
+      viewBox="0 0 320 512"
+      height="1.2em"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+      ></path>
+    </svg>
+  </li>
+  </a>
+   <a herf="https://www.youtube.com/@kripahomesolutions" target="_blank">
+  <li class="icon twitter">
+    <span class="tooltip">WhatsApp</span>
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="1.2em" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg>
+      
+  </li>
+
+    <a href="https://www.instagram.com/kripahomesolutions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+  <li class="icon instagram">
+    <span class="tooltip">Instagram</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="1.2em"
+      fill="currentColor"
+      class="bi bi-instagram"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+      ></path>
+    </svg>
+  </li>
+</a>
+  <a href="https://www.youtube.com/@kripahomesolutions" target="_blank">
+  <li class="icon youtube">
+    <span class="tooltip">YouTube</span>
+  <svg xmlns="http://www.w3.org/2000/svg" 
+  width="16"
+  height="1.2em"
+    fill="currentColor"
+     class="bi bi-youtube" 
+     viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+</svg>
+  </li>
+  </a>
+</ul>
+</div>
+</section>
+
+
+<style>
+/* Scroll buttons */
+.scroll-btn {
+  background: #0074e7;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  z-index: 10;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.scroll-btn.left {
+  left: 2px;
+}
+
+.scroll-btn.right {
+  right: 2px;
+}
+
+/* Reels container */
+.reels-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+/* Reel row (scrollable) */
+.reels-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 1rem;
+      /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.reels-row blockquote.instagram-media {
+  flex: 0 0 auto;
+  width: 240px;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reels-row blockquote.instagram-media {
+    width: 200px;
+  }
+
+  .instagram-reels .section-title {
+    
+    text-align: center;
+  }
+
+  .instagram-reels .section-subtitle {
+    
+    text-align: center;
+  }
+}
+</style>
+
+
+</main>
+      <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kripa Home Solutions</h3>
+                    <p>Your trusted partner for quality hardware and home décor solutions in Kollam, Kerala.</p>
+                    <p>We specialize in providing premium quality products at affordable prices, ensuring every customer gets the best value for their investment in home improvement.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="Stores/hardware-store.html">Products</a></li>
+                        <li><a href="Stores/hardware-store.html">Hardware</a></li>
+                        <li><a href="Stores/kitchen-store.html">Kitchen</a></li>
+                        <li><a href="Stores/paint-store.html">Paints</a></li>
+                  
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Branches</h4>
+                     <ul>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/p7cphN3g3XNhTuUQ8">Our Main Branch</a></li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/ouiWNDZ57jL2GeXWA">Our Paint Store</a></li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/QuR4ChLmLo3SdTtcA">Our Bath & Kitchen Store</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg> +91 86061 23467</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-440 160-640v400h360v80H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v280h-80v-200L480-440Zm0-80 320-200H160l320 200ZM760-40l-56-56 63-64H600v-80h167l-64-64 57-56 160 160L760-40ZM160-640v440-240 3-283 80Z"/></svg>Kripaelectricalsputhoor@gmail.com</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-200v-440 440-15 15Zm0 80q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v171q-18-13-38-22.5T800-508v-132H160v440h283q3 21 9 41t15 39H160Zm240-600h160v-80H400v80ZM720-40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm20-208v-112h-40v128l86 86 28-28-74-74Z"/></svg>Mon-Sat: 9AM-8PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kripa Home Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+  AOS.init({
+    duration: 1000, // animation duration in ms
+    once: true      // whether animation should happen only once
+  });
+</script>
+    <script src="assets/script.js"></script>
+</body>
+</html>
