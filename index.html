@@ -58,10 +58,10 @@ function createOfferCardHTML(offer) {
       </a>
       <div class="offer-details">
         <h3>
-          <a href="${offer.link || '#'}" target="_blank">${offer.title}</a>
+          <a href="${offer.link || '#'}" target="_blank">${offer.title}
         </h3>
         <h4>
-          <span class="offer-description">${offer.description}</span>
+          <span class="offer-description">${offer.description}</span></a>
         </h4>
         <div class="offer-footer">
           <h5><span class="offer-discount">${offer.discount} OFF</span></h5>
@@ -263,50 +263,27 @@ loadInstagramReels();
     <path d="M0 0h24v24H0z" fill="none"></path>
 
     <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
-
    </svg>
-
   </div>
-
  </button>
-
 </a>
-
 <a href="contact.html" style="font-weight: bolder; text-decoration: none; color: inherit;">
-
 <button class="cssbuttons-io-button" data-aos="zoom-in-up">
-
  Visit Us
-
 <div class="icon">
 <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
-
  <path d="M0 0h24v24H0z" fill="none"></path>
-
 <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor" ></path>
-
  </svg>
-
  </div>
-
 </button>
-
 </a>
-
  </div>
-
-
-
  </div>
-
 <div class="hero-image">
-
  <img src="assets/img/build1.jpg" alt="Modern Home Interior" data-aos="zoom-in-up" >
-
 </div>
-
 </div>
-
 </section> 
 
 
@@ -403,6 +380,10 @@ loadInstagramReels();
 
 .offer-details h3, .offer-details h4, .offer-details h5 {
   margin: 0.5rem 0;
+}
+.offer-details a{
+  text-decoration: none;
+  color: inherit;
 }
 
 .offer-description {
