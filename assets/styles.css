@@ -675,8 +675,11 @@ main {
   .testimonial-card {
     padding: 16px;
   }
-  .testimonial-text {
+  .stars {
     font-size: 0.9rem;
+  }
+  .testimonial-text {
+    font-size: 0.85rem;
   }
 }
 
