@@ -285,8 +285,8 @@ body {
 
 /* Hero Section */
 .hero {
-    margin-top: 50px;
-    padding: 80px 0;
+   padding-top: 150px;
+    padding-bottom: 10px; /* Use padding-bottom for consistent spacing */
     background: linear-gradient(135deg, #08090a 0%, #113ce9fe 100%);
     min-height: 1vh;
     display: flex;
@@ -675,8 +675,7 @@ body {
 @media (max-width: 1024px) {
     .hero-container {
         grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
+        gap: 1rem;
     }
     
     .hero-title {
@@ -727,7 +726,7 @@ body {
     }
 
     .hero {
-        padding: 70px 0;
+       padding-top: 150px;
     }
     
     .hero-title {
