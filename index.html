@@ -725,10 +725,11 @@ loadInstagramReels();
 }
 
 .category-header h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   flex: 1;
 }
+
 
 .category-header .view-all {
   font-size: 1rem;
@@ -769,6 +770,10 @@ loadInstagramReels();
   object-fit: cover;
   display: block;
 }
+.category-scroll-card h3 {
+  margin: 4px 15px;
+  font-size: 1.2rem;
+}
 
 .category-scroll-card:hover {
   transform: translateY(-6px);
@@ -790,7 +795,7 @@ loadInstagramReels();
 .category-scroll-card .btn {
   background: #ff6b35;
   color: #fff;
-  padding: 6px 12px;
+  padding: 10px 12px;
   border-radius: 6px;
   font-size: 0.85rem;
   text-decoration: none;
@@ -825,7 +830,7 @@ loadInstagramReels();
   <div class="container">
     <h2 class="section-title">Our Product Categories</h2>
     <p class="section-subtitle">
-      From essential hardware to elegant décor, we have everything you need to create your perfect home
+      We assure our customers of the best products to build their dream homes. We have a wide range of selections to choose from our store.
     </p>
 
     <div class="categories-grid">
@@ -974,7 +979,7 @@ loadInstagramReels();
         <section class="features">
             <div class="container">
                 <h2 class="section-title" style="color:#000000">Why Choose Kripa Home Solutions?</h2>
-                 <p class="section-subtitle" style="color:#000000">Follow our journey and see our latest projects on Instagram</p>
+                 <p class="section-subtitle" style="color:#000000">Follow our journey and see our  on Instagram</p>
                 <div class="features-grid">
                     <div class="feature-card" data-aos="zoom-in-up">
                         <div class="feature-icon">🏆</div>
@@ -1009,7 +1014,7 @@ loadInstagramReels();
                         Brand's We offers
                     </h2>
                     <p class="section-subtitle" style="color: #000000">
-      From essential hardware to elegant décor, we have everything you need to create your perfect home
+      Best Collections of Brands Under One Roof
     </p>
                 </div>
             </div>
@@ -1118,15 +1123,17 @@ loadInstagramReels();
 
         <!-- Instagram Reels Section -->
 <script>
-  function scrollGallery(direction) {
-    const gallery = document.getElementById('reelGallery');
-    const scrollAmount = 260;
+// Reels gallery scroll function
+function scrollReels(direction) {
+  const gallery = document.getElementById('reelGallery');
+  const scrollAmount = 260; // Or whatever amount you need
 
-    gallery.scrollBy({
-      left: direction * scrollAmount,
-      behavior: 'smooth'
-    });
-  }
+  gallery.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
 //hardware gallery scroll function
 function scrollGallery(button, direction) {
   const wrapper = button.closest('.category-scroll-wrapper');
@@ -1156,10 +1163,10 @@ function scrollGallery(galleryId, direction) {
 <section class="instagram-reels">
   <div class="container">
     <h2 class="section-title" style="color:#000000">See Us in Action</h2>
-    <p class="section-subtitle" style="color:#000000">Follow our journey and see our latest projects on Instagram</p>
+    <p class="section-subtitle" style="color:#000000">Follow our journey and see our latest Feeds on Instagram</p>
 
     <div class="reels-container">
-      <button class="scroll-btn left" onclick="scrollGallery(-1)">
+      <button class="scroll-btn left" onclick="scrollReels(-1)">
          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>            
       </button>
 
@@ -1167,14 +1174,10 @@ function scrollGallery(galleryId, direction) {
         <!-- Reels will be loaded here -->
       </div>
 
-      <button class="scroll-btn right" onclick="scrollGallery(1)">
+     <button class="scroll-btn right" onclick="scrollReels(1)">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
       </button>
     </div>
-
-
-    
-
   </div>
 
   <script async src="//www.instagram.com/embed.js"></script>
@@ -1274,6 +1277,9 @@ function scrollGallery(galleryId, direction) {
 }
 
 /* Reels container */
+.instagram-reels {
+  padding: 60px 20px;
+}
 .reels-container {
   position: relative;
   overflow: hidden;
