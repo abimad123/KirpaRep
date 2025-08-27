@@ -234,6 +234,165 @@ loadInstagramReels();
   </div>
 </header>
 
+<nav class="main-nav">
+  <ul>
+    <li>
+      <a href="Stores/products.html">
+        <img src="https://i.pinimg.com/736x/b6/fe/28/b6fe286e849ddb118321d39f019f311b.jpg" alt="">
+        <span>Modular Switches</span>
+      </a>
+    </li>
+
+     <li>
+      <a href="Stores/products.html">
+        <img src="assets/img/categories/WaterHeaters.png" alt=" ">
+        <span>Water Heaters</span>
+      </a>
+    </li>
+
+     <li>
+      <a href="Stores/products.html">
+        <img src="https://www.crompton.co.in/cdn/shop/files/1_4f509f3c-c0c3-43d8-b6aa-0585601591cc.png?v=1706773880&width=1100" alt=" ">
+        <span>Kitchen Chimneys</span>
+      </a>
+    </li>
+     <li>
+      <a href="Stores/products.html">
+        <img src="https://www.crompton.co.in/cdn/shop/files/1_4f509f3c-c0c3-43d8-b6aa-0585601591cc.png?v=1706773880&width=1100" alt=" ">
+        <span>Kitchen Chimneys</span>
+      </a>
+    </li>
+     <li>
+     <a href="Stores/products.html">
+        <img src="https://www.crompton.co.in/cdn/shop/files/1_4f509f3c-c0c3-43d8-b6aa-0585601591cc.png?v=1706773880&width=1100" alt=" ">
+        <span>Kitchen Chimneys</span>
+      </a>
+    </li>
+     <li>
+      <a href="Stores/products.html">
+        <img src="assets/img/categories/ceilingLight.png" ">
+        <span>Ceiling Lights</span>
+      </a>
+    </li>
+
+    <li>
+     <a href="Stores/products.html">
+        <img src="https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000015317561-1000015317560_02-2100.jpg" alt="Living Room-image">
+        <span>Table light</span>
+      </a>
+      
+    </li>
+
+    <li>
+  <a href="Stores/products.html">
+        <img src="https://www.crompton.co.in/cdn/shop/files/1_4f509f3c-c0c3-43d8-b6aa-0585601591cc.png?v=1706773880&width=1100" alt=" ">
+        <span>Kitchen Chimneys</span>
+      </a>
+      
+    </li>
+    
+    </ul>
+</nav>
+<style>
+.main-nav {
+  /* Remove the padding-top that was pushing it down */
+  font-family: Arial, sans-serif;
+  background-color: #F9F7F3;
+  padding: 15px 0;
+  
+  /* Add margin-top to create space below the fixed navbar */
+  margin-top: 90px; /* Match this value to your navbar's height */
+}
+
+.main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.main-nav li {
+  position: relative;
+}
+
+/* Style for the main menu buttons */
+.main-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: #007bff;
+}
+
+.main-nav img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  border-radius: 50%; 
+}
+@media (max-width: 768px) {
+  .main-nav {
+    /* Keep the default background and padding */
+    background-color: #F9F7F3;
+    padding: 10px 15px;
+    margin-top: 120px; 
+    overflow-x: auto;
+    white-space: nowrap;
+
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Make the list inline and non-wrapping */
+  .main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex; /* Use inline-flex to enable scrolling */
+    gap: 10px; /* Reduces the gap between items */
+  }
+
+  /* Adjust link and image sizes to be more compact */
+  .main-nav li {
+    flex-shrink: 0; /* Prevents list items from shrinking to fit */
+    position: relative;
+    display: inline-block;
+  }
+
+  .main-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 8px; /* Reduce padding for a tighter layout */
+    font-size: 0.75rem; /* Smaller font size to fit more text */
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .main-nav img {
+    width: 45px; /* Smaller image size */
+    height: 45px;
+    margin-bottom: 2px; /* Smaller margin below the image */
+  }
+}
+</style>
+
     <main>
         <!-- Hero Section -->
      <section class="hero">
@@ -286,7 +445,6 @@ loadInstagramReels();
 </div>
 </section> 
 
-
  <!-- Offers Section -->
 <section id="offers" class="offers-section">
   <h2 data-aos="zoom-in-up">Exclusive Offers</h2>
@@ -309,8 +467,6 @@ loadInstagramReels();
       </div>
   </div>
 </section>
-
-
 <style>
   .offers-section {
     background-color: #f4f4f4;
@@ -466,27 +622,23 @@ loadInstagramReels();
 </style>
 
 <section class="categories-section">
-  <h2 class="main-heading">Shop by Category</h2>
+  <h2 class="section-title">Shop by Category</h2>
 
   <!-- Hardware Block -->
-  <div class="category-block">
-    <div class="category-header">
-      <span class="icon"></span>
-      <h3>Hardware</h3>
-       <a href="Stores/hardware-store.html" class="view-all">View All →</a>
-    </div>
-    <!-- Left Scroll Button -->
-<div class="category-scroll-wrapper">
-    <button class="scroll-btn left" onclick="scrollGallery(this, -1)">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+<div class="category-block">
+  <div class="category-header">
+    <span class="icon"></span>
+    <h3>Hardware</h3>
+    <a href="Stores/hardware-store.html" class="view-all">View All →</a>
+  </div>
+  <div class="category-scroll-wrapper">
+    <button class="scroll-btn left" onclick="scrollButton('hardwareGallery', -1)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
         <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
       </svg>
     </button>
-
-    <!-- Scrollable Categories -->
-   
-<div class="categories-scroll" id="catGallery">
-
+    
+    <div class="categories-scroll" id="hardwareGallery">
       <div class="category-scroll-card">
         <img src="https://www.vguard.in/uploads/subcategory/pario-gold1-sm.jpg" alt="Ceiling Fans">
         <h3>Ceiling Fans</h3>
@@ -537,13 +689,13 @@ loadInstagramReels();
 
     </div>
     
-<button class="scroll-btn right" onclick="scrollGallery(this, 1)">
+ <button class="scroll-btn right" onclick="scrollButton('hardwareGallery', 1)">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
         <path d="M400-240 640-480 400-720l-56 56 184 184-184 184 56 56Z"/>
       </svg>
     </button>
   </div>
-  </div>
+</div>
 
 
   <!-- Kitchen Block -->
@@ -699,14 +851,9 @@ loadInstagramReels();
 <style>
 .categories-section {
   padding: 60px 15px;
-  background: #f9f9f9;
+  background: #F7F6F2;
 }
 
-.main-heading {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
 
 .category-block {
   margin-bottom: 50px;
@@ -746,7 +893,7 @@ loadInstagramReels();
 .categories-scroll {
   display: flex;
   gap: 20px;
-  overflow-x: auto;
+  overflow-x: auto; 
   scroll-behavior: smooth;
   padding-bottom: 10px;
 }
@@ -762,6 +909,7 @@ loadInstagramReels();
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s;
+  background: #F8F4F4;
 }
 
 .category-scroll-card img {
@@ -835,7 +983,7 @@ loadInstagramReels();
 
     <div class="categories-grid">
       <!-- Hardware & Tools -->
-      <div class="category-card" data-aos="zoom-in-up">
+      <div class="category-card" data-aos="zoom-in-up" style=" background: url('https://thumbs.dreamstime.com/b/plumbing-materials-tools-white-workbench-top-view-sample-horizontal-composition-246815656.jpg');">
         <div class="category-card-header">
           <h3 class="category-title">Hardware & Tools</h3>
         </div>
@@ -846,7 +994,10 @@ loadInstagramReels();
       </div>
 
       <!-- Electrical Supplies -->
-      <div class="category-card" data-aos="zoom-in-up">
+      <div class="category-card" data-aos="zoom-in-up" style="background-image: url('https://media.architecturaldigest.com/photos/55e76fc0302ba71f3016c31c/master/w_320,c_limit/dam-images-decor-2015-01-sleek-kitchens-contemporary-kitchen-inspiration-17.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;">
         <div class="category-card-header">
           <h3 class="category-title">Kitchen Supplies</h3>
           <span class="category-count-badge">1200+ Products</span>
@@ -858,7 +1009,10 @@ loadInstagramReels();
       </div>
 
       <!-- Plumbing Solutions -->
-      <div class="category-card" data-aos="zoom-in-up">
+      <div class="category-card" data-aos="zoom-in-up" style="background-image: url('assets/img/categories/paintingsolutions.png');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;">
         <div class="category-card-header">
           <h3 class="category-title">Painting Solutions</h3>
           <span class="category-count-badge">650+ Products</span>
@@ -875,19 +1029,20 @@ loadInstagramReels();
   <style>
       .categories {
   padding: 60px 20px;
- background: linear-gradient(135deg, #000000, #3498db);
+ background: #F9F7F3;;
 }
 
 .section-title {
   text-align: center;
   margin-bottom: 10px;
-  color: #f4f4f4;
+  color: #000000;
 }
 
 .section-subtitle {
   text-align: center;
   margin-bottom: 40px;
-  color: #ffffff;
+ 
+  color: #000000;
 }
 
 .categories-grid {
@@ -897,7 +1052,6 @@ loadInstagramReels();
 }
 
 .category-card {
-  background: #fff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
@@ -933,16 +1087,20 @@ loadInstagramReels();
 }
 
 .category-desc {
-  font-size: 0.95rem;
-  color: #666;
+  font-size: 0.85rem;
+  padding: 20px 20px;
+  background-color: #0c03034a;
+  color: #f4f4f4;
   margin: 15px 0;
+   font-weight: bold;
 }
 
 .category-btn {
   text-align: center;
   padding: 10px 15px;
-  border: 1px solid #007bff;
-  color: #007bff;
+  background-color: #007bff;
+  border: 1px solid #f9f7f7;
+  color: #eff0f2;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
@@ -950,7 +1108,7 @@ loadInstagramReels();
 }
 
 .category-btn:hover {
-  background-color: #007bff;
+  background-color: #316195;
   color: #fff;
 }
 
@@ -962,6 +1120,8 @@ loadInstagramReels();
 
   .category-card {
     padding: 16px;
+    height: 200px;
+    width: 100%;
   }
 
   .section-title {
@@ -971,6 +1131,9 @@ loadInstagramReels();
   .section-subtitle {
     font-size: 0.95rem;
   }
+  .category-desc{
+    display: none;
+  }
 }
 
         </style>
@@ -978,8 +1141,8 @@ loadInstagramReels();
         <!-- Why Choose Us -->
         <section class="features">
             <div class="container">
-                <h2 class="section-title" style="color:#000000">Why Choose Kripa Home Solutions?</h2>
-                 <p class="section-subtitle" style="color:#000000">Follow our journey and see our  on Instagram</p>
+                <h2 class="section-title" >Why Choose Kripa Home Solutions?</h2>
+                 <p class="section-subtitle" >Follow our journey and see our  on Instagram</p>
                 <div class="features-grid">
                     <div class="feature-card" data-aos="zoom-in-up">
                         <div class="feature-icon">🏆</div>
@@ -1010,10 +1173,10 @@ loadInstagramReels();
         <div class="row">
             <div class="col-12">
                 <div class="title-wrapper">
-                    <h2 class="section-title" style="text-align:center; color: #000000;">
+                    <h2 class="section-title" style="text-align:center;">
                         Brand's We offers
                     </h2>
-                    <p class="section-subtitle" style="color: #000000">
+                    <p class="section-subtitle">
       Best Collections of Brands Under One Roof
     </p>
                 </div>
@@ -1133,20 +1296,6 @@ function scrollReels(direction) {
     behavior: 'smooth'
   });
 }
-
-//hardware gallery scroll function
-function scrollGallery(button, direction) {
-  const wrapper = button.closest('.category-scroll-wrapper');
-  const gallery = wrapper.querySelector('.categories-scroll');
-  if (!gallery) return; // Prevent error if not found
-
-  const scrollAmount = 300;
-  gallery.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-}
-
 
 // Kitchen and paint gallery scroll function
 function scrollGallery(galleryId, direction) {
@@ -1278,7 +1427,8 @@ function scrollGallery(galleryId, direction) {
 
 /* Reels container */
 .instagram-reels {
-  padding: 60px 20px;
+  padding: 60px 10px;
+  background-color: #f4f4f4;
 }
 .reels-container {
   position: relative;
