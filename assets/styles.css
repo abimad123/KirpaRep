@@ -278,17 +278,12 @@ h4 { font-size: 1.25rem; }
 }
 
 
-/* Main Content */
-main {
-    margin-top: 80px;
-}
-
 /* Hero Section */
 .hero {
     padding: 4rem 0;
     padding-top: 6rem;
     height: 650px;
-    background: linear-gradient(135deg, #000000, #3498db);
+    background: #f8f2dbdd;
 }
 
 .hero-container {
@@ -304,12 +299,12 @@ main {
 .hero-title {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: #000000;
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 2rem;
     line-height: 1.6;
 }
@@ -328,8 +323,8 @@ main {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 .cssbuttons-io-button {
-  background: #a370f0;
-  color: white;
+  background: #965fea;
+  color: rgb(231, 230, 230);
   font-family: inherit;
   padding: 0.35em;
   padding-left: 1.2em;
@@ -518,7 +513,7 @@ main {
 }
 
 .feature-card {
-  background: white;
+  background: #F8F6F1;
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
@@ -604,7 +599,7 @@ main {
 }
 /* 🌟 Testimonials Section */
 .testimonials {
-  background: linear-gradient(135deg, #000000, #3498db);
+  background: #F9F7F3;;
   padding: 60px 20px;
   text-align: center;
 }
@@ -613,12 +608,12 @@ main {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #f5e4e4;
+  color: #000000;
 }
 
 .testimonials .section-subtitle {
   font-size: 1rem;
-  color: #fff7f7;
+  color: #000000;
   margin-bottom: 40px;
 }
 
@@ -630,7 +625,7 @@ main {
 }
 
 .testimonial-card {
-  background: #fff;
+  background: #FEF8EB;
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -908,7 +903,7 @@ main {
 }
 
 .social-media{
- background: linear-gradient(135deg, #000000, #3498db);
+ background: #FAF6F0;
     text-align: center; 
        display: flex;
     justify-content: center;
