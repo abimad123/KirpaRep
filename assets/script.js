@@ -1,11 +1,15 @@
-
-function goToCategory(cat) {
-  window.location.href = `category.html?cat=${cat}`;
+// Function to scroll a gallery horizontally
+function scrollButton(galleryId, direction) {
+  const gallery = document.getElementById(galleryId);
+  const scrollDistance = 300; // You can adjust this value
+  gallery.scrollBy({
+    left: direction * scrollDistance,
+    behavior: 'smooth'
+  });
 }
 
 const container = document.querySelector(".categories-container");
 let scrollInterval;
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const emblaNode = document.querySelector('#brandCarousel');
