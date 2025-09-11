@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Kripa Home Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #1f1f1f;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            padding-top: 8rem;
+        }
+
+        /* Header Section */
+        .headerr {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            width: 700px; 
+            height: auto;
+            margin-right: 60px; 
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .mission-statement {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #6a6a6a;
+            flex-grow: 1; /* Allows the mission statement to take up remaining space */
+        }
+
+        /* About us Heading */
+        .about-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Image Section */
+        .team-image-container {
+            overflow: hidden;
+            border-radius: 25px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-image {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%);
+            height: 200px;
+        }
+
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 100px;
+        }
+
+        .founded-location {
+            line-height: 1.5;
+            font-size: 0.9rem;
+            color: #6a6a6a;
+        }
+
+        .founded-location .label {
+            font-weight: 600;
+            color: #1f1f1f;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .location-details {
+            margin-top: 20px;
+        }
+
+        .info-text p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+                max-width: 300px;
+            }
+            .logo{
+                display: none;
+            }
+
+            .about-heading {
+                font-size: 2.5rem;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .founded-location, .info-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+     <header class="header">
+  <div class="nav-container">
+    <!-- Brand -->
+    <div class="nav-brandd">
+      <a href="index.html" class="logo-link">
+        <img src="assets/img/Kripalogo.png" alt="Kripa Home Solutions Logo" class="logo-img" style="height:70px; width:auto;" data-aos="zoom-in-up">
+      </a>
+    </div>
+
+    <!-- Toggle Button (mobile only) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+
+      <!-- Products Dropdown -->
+      <div class="nav-dropdown">
+       <button class="dropdown-toggle">
+    Categories
+    <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#333">
+      <path d="M480-360 280-560h400L480-360Z"/>
+    </svg>
+  </button>
+ <div class="dropdown-content">
+          <a href="Stores/hardware-store.html">Hardware</a>
+          <a href="Stores/paint-store.html">Paints</a>
+          <a href="Stores/kitchen-store.html">Kitchen</a>
+        </div>
+      </div>
+
+      <a href="aboutus.html" class="nav-link active">About Us</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="https://wa.me/919876543210" class="nav-link whatsapp-link" target="_blank">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+const navToggle = document.getElementById("navToggle");
+const navMenu = document.getElementById("navMenu");
+
+navToggle.addEventListener("click", () => {
+  navToggle.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const parent = toggle.parentElement;
+    parent.classList.toggle('open');
+  });
+});
+
+</script>
+    <div class="container">
+        
+        <div class="headerr">
+            <div class="logo"><a href="index.html"><img src="assets/img/Kripalogo.png" alt="Kripa Home Solutions Logo"></a></div>
+            <p class="mission-statement">At Kripa Home Solutions, we believe that travel is more than just a journey—it's an experience that connects people, places, and cultures. That's why we are committed to providing unique stays and unforgettable experiences that turn every trip into a lasting memory.</p>
+        </div>
+
+        <h1 class="about-heading">About us</h1>
+        
+        <div class="team-image-container">
+            <img class="team-image" src="assets/img/build1.jpg" alt="Team smiling">
+        </div>
+
+        <div class="info-section">
+            <div class="founded-location">
+                <div class="founded-details">
+                    <span class="label">Founded In</span>
+                    2017
+                </div>
+                <div class="location-details">
+                    <span class="label">Location</span>
+                    Kripa Home Solutions<br>
+                    Kottarakkara Sasthamcotta Rd,<br> Puthoor, Kerala 691507
+                </div>
+            </div>
+            <div class="info-text">
+                <p>We embrace the idea that every stay should feel special. Whether it's a cozy cabin in the woods, a beachfront villa, or a vibrant city apartment, we carefully curate accommodations that match every traveler's style and preference.</p>
+                <p>We are dedicated to offering a seamless and trusted booking experience, connecting travelers with verified hosts and authentic local experiences. From hidden gems to luxury getaways, Kripa Home Solutions is here to make your travels extraordinary.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
