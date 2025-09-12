@@ -257,45 +257,51 @@ loadInstagramReels();
 <body style=" background: #f7f7f7;">
  <header class="header">
   <div class="nav-container">
-    <!-- Brand -->
+    <!-- Left: Brand -->
     <div class="nav-brand">
       <a href="index.html" class="logo-link">
         <img src="assets/img/Kripalogo.png" alt="Kripa Home Solutions Logo" class="logo-img" style="height:70px; width:auto;" data-aos="zoom-in-up">
       </a>
     </div>
 
+    <!-- Center: Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="What are you looking for?">
+      <button id="searchBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#fff">
+          <path d="M19.6 18.2l-5.1-5.1c1.1-1.4 1.7-3.1 1.7-5 0-4.5-3.7-8.1-8.1-8.1S0 3.6 0 8.1s3.7 8.1 8.1 8.1c1.9 0 3.6-.6 5-1.7l5.1 5.1 1.4-1.4zM8.1 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Right: Navigation Menu -->
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
 
-    <!-- Navigation Menu -->
     <nav class="nav-menu" id="navMenu">
       <a href="index.html" class="nav-link active">Home</a>
-
-      <!-- Products Dropdown -->
       <div class="nav-dropdown">
-       <button class="dropdown-toggle">
-    Categories
-    <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#333">
-      <path d="M480-360 280-560h400L480-360Z"/>
-    </svg>
-  </button>
- <div class="dropdown-content">
+        <button class="dropdown-toggle">
+          Categories
+          <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#333">
+            <path d="M480-360 280-560h400L480-360Z"/>
+          </svg>
+        </button>
+        <div class="dropdown-content">
           <a href="Stores/hardware-store.html">Hardware</a>
           <a href="Stores/paint-store.html">Paints</a>
           <a href="Stores/kitchen-store.html">Kitchen</a>
         </div>
       </div>
-
       <a href="aboutus.html" class="nav-link">About Us</a>
       <a href="contact.html" class="nav-link">Contact</a>
       <a href="https://wa.me/919876543210" class="nav-link whatsapp-link" target="_blank">WhatsApp</a>
     </nav>
   </div>
 </header>
-
 
 
 <nav class="main-nav">
