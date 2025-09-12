@@ -533,6 +533,28 @@ background: transparent;
   }
 }
 
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+  
+  .button-container {
+    justify-content: center;
+  }
+}
 .sendbtn {
   font-family: inherit;
   font-size: 20px;
