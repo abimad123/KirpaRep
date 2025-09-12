@@ -1,4 +1,13 @@
-  function scrollButton(galleryId, direction) {
+
+    document.getElementById("searchBtn").addEventListener("click", () => {
+  const keyword = document.getElementById("searchInput").value.trim();
+  if (keyword) {
+    // Redirect to search results page
+    window.location.href = `Stores/products.html?search=${encodeURIComponent(keyword)}`;
+  }
+});
+
+function scrollButton(galleryId, direction) {
     const gallery = document.getElementById(galleryId);
     if (!gallery) return;
 
