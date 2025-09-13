@@ -402,172 +402,116 @@ loadInstagramReels();
 </section> 
 
  <!-- Offers Section -->
-<section id="offers" class="offers-section">
-  <h2 class="section-title">Exclusive Offers</h2>
-  <p class="section-subtitle">
-    Discover the best deals and special discounts.That are handpicked just for you.
-  </p>
-  <div class="offers-carousel-container" data-aos="zoom-in-up">
-    <div class="offers-carousel-track" id="offer-container">
-      </div>
-    <div class="offers-carousel-navigation">
+<section class="banner-section">
+  <div class="banner-slider">
     
-      <button class="nav-btn prev"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
-      </svg>
-    </button>
-      <button class="nav-btn next"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-        <path d="M400-240 640-480 400-720l-56 56 184 184-184 184 56 56Z"/>
-      </svg>
-    </button>
+   <!-- Slide 1 -->
+    <a href="contact.html" class="banner-slide active">
+      <picture>
+        <!-- Mobile -->
+        <source media="(max-width: 768px)" srcset="assets/img/categories/banner1-mobile.png">
+        <!-- Tablet -->
+        <source media="(max-width: 1024px)" srcset="assets/img/categories/banner1-tablet.png">
+        <!-- Desktop (default) -->
+        <img src="assets/img/categories/banner1-desktop.png" alt="Dream Home Finishing Package Offer" class="banner-image">
+      </picture>
+    </a>
 
-    </div>
-    <div class="offers-carousel-pagination">
-      </div>
+    <!-- Slide 2 -->
+    <a href="new-arrivals.html" class="banner-slide">
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/img/categories/newarrivals-mobile.png">
+        <source media="(max-width: 1024px)" srcset="assets/img/categories/newarrivals-tablet.png">
+        <img src="assets/img/categories/NEWARRIVALS.png" alt="New Arrivals Offer" class="banner-image">
+      </picture>
+    </a>
+
+    <!-- Slide 3 -->
+    <a href="offers.html" class="banner-slide">
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/img/categories/offer-mobile.png">
+        <source media="(max-width: 1024px)" srcset="assets/img/categories/offer-tablet.png">
+        <img src="assets/img/categories/offer-desktop.png" alt="Special Discounts" class="banner-image">
+      </picture>
+    </a>
   </div>
 </section>
+         
 <style>
-  .offers-section {
-     background: #f7f7f7;
-    
-  }
-  .offers-section h2 {
-  padding-top: 4rem;
-  letter-spacing: 0.5px;
+ /* Banner Section */
+.banner-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.offers-carousel-container {
+.banner-slide {
+  display: none;       
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: opacity 1s ease-in-out;
+  position: absolute;  
+  top: 0;
+  left: 0;
+}
+
+.banner-slider {
   position: relative;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1550px;
   margin: 0 auto;
   overflow: hidden;
 }
 
-/* The track for the offer cards */
-.offers-carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  scroll-snap-type: x mandatory;
+.banner-slide.active {
+  display: block;  
+  position: relative;
 }
 
-.offer-card {
 
-  min-width: 320px;
-  max-width: 320px;
-  height: auto; 
-  box-sizing: border-box;
-  margin: 16px; 
-  flex-shrink: 0;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.offer-image {
+.banner-image {
   width: 100%;
-  height: 200px; 
+  height: auto;
   object-fit: cover;
   display: block;
+
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .banner-slider {
+    max-width: 100%;
 
-.offer-details {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; 
+  }
+  .banner-image {
+    height: auto;
+    object-fit: cover;
+  }
+}
+@media (max-width: 1280px) {
+ .banner-slider {
+    max-width: 100%;
+
+  }
+  .banner-image {
+    height: auto;
+    object-fit: cover;
+  }
+}
+/* Mobile */
+@media (max-width: 768px) {
+  .banner-image {
+    height: auto;
+    max-width: 100%;
+  }
 }
 
-.offer-details h3, .offer-details h4, .offer-details h5 {
-  margin: 0.5rem 0;
-}
-.offer-details a{
-  text-decoration: none;
-  color: inherit;
-}
-
-.offer-description {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-
-.offer-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-  padding: 0 1.5rem 1.5rem;
-}
-.offer-discount {
-  display: inline-block;
-  padding: 1rem 0.5rem;
-  background: #ff6b35;
-  color: #fff;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-.offer-details small {
-  display: block;
-  margin-top: 0.5rem;
-  color: #888;
-}
-
-
-.offers-carousel-navigation {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  padding: 0 1rem;
-  z-index: 10;
-}
-
-.nav-btn {
-   background: #0074e7;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  padding: 0;
-  cursor: pointer;
-  top: 50%;
-  z-index: 10;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.offers-carousel-pagination {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  position: absolute;
-  bottom: 2rem;
-  width: 100%;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dot.active {
-  background-color: #333;
-}
 </style>
 
 <section class="categories-section">
