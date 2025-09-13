@@ -1,3 +1,24 @@
+ let currentSlide = 0;
+  const slides = document.querySelectorAll(".banner-slide");
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      if (i === index) {
+        slide.classList.add("active");
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }
+
+  // Auto slide every 4 seconds
+  setInterval(nextSlide, 4000);
+
 
     document.getElementById("searchBtn").addEventListener("click", () => {
   const keyword = document.getElementById("searchInput").value.trim();
