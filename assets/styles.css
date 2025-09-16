@@ -744,6 +744,7 @@ background: transparent;
   align-items: center;
   width: 100%;
   padding: 10px 0; 
+  margin-bottom: 2rem;
 }
 
 .new-arrivals-banner {
@@ -761,7 +762,7 @@ background: transparent;
   }
 
   .new-arrivals-banner {
-    width: 100vw; 
+    width: 90vw; 
     position: relative;
     left: 50%;
     transform: translateX(-50%);
