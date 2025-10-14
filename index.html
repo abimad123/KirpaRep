@@ -45,8 +45,7 @@
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-    import {query, orderBy } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
     // Firebase config
     const firebaseConfig = {
@@ -62,31 +61,44 @@
     // Init
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const reelGallery = document.getElementById('reelGallery');
 
+    // This is your function definition
     async function loadInstagramReels() {
-        const reelsQuery = query(
-            collection(db, "instagramReels"),
-            orderBy("createdAt", "desc")
-        );
+        const reelGallery = document.getElementById('reelGallery');
+        
+        // Only run if the reelGallery element exists on the page
+        if (reelGallery) {
+            const reelsQuery = query(
+                collection(db, "instagramReels"),
+                orderBy("createdAt", "desc")
+            );
 
-        const querySnapshot = await getDocs(reelsQuery);
-        if(reelGallery) {
-          reelGallery.innerHTML = '';
-          querySnapshot.forEach((doc) => {
-              const reel = doc.data();
-              reelGallery.innerHTML += `
-                  <blockquote class="instagram-media"
-                      data-instgrm-permalink="${reel.url}"
-                      data-instgrm-version="14">
-                  </blockquote>
-              `;
-          });
-          if (window.instgrm && window.instgrm.Embeds) {
-              window.instgrm.Embeds.process();
-          }
+            const querySnapshot = await getDocs(reelsQuery);
+            
+            reelGallery.innerHTML = ''; // Clear the gallery first
+            querySnapshot.forEach((doc) => {
+                const reel = doc.data();
+                reelGallery.innerHTML += `
+                    <blockquote class="instagram-media"
+                        data-instgrm-permalink="${reel.url}"
+                        data-instgrm-version="14">
+                    </blockquote>
+                `;
+            });
+            
+            // Process the new Instagram embeds
+            if (window.instgrm && window.instgrm.Embeds) {
+                window.instgrm.Embeds.process();
+            }
         }
     }
+
+    // ⬇️ ADD THIS PART TO RUN YOUR FUNCTION ⬇️
+    // Wait for the HTML document to be fully loaded before running the script
+    document.addEventListener('DOMContentLoaded', () => {
+        loadInstagramReels();
+    });
+
 </script>
 
 </head>
