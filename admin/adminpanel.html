@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kripa Home Solutions - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="assets/admin-styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background-light font-display">
+
+    <div class="app-container"> 
+        
+        <aside class="sidebar">
+            <div class="sidebar-logo border-gray-200">
+                <div class="sidebar-logo-img size-20" style='background-image: url("../assets/img/logo.png");'></div> 
+                <div class="user-text">
+                    <p class="name">Admin</p>
+                    <p class="role">Kripa Home Solutions</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a class="nav-link active-link" data-page="dashboard-page-content">
+                    <span class="material-symbols-outlined">dashboard</span><p class="text-sm font-medium">Dashboard</p>
+                </a>
+                <a class="nav-link" data-page="products-page-content">
+                    <span class="material-symbols-outlined">inventory_2</span><p class="text-sm font-medium">Products</p>
+                </a>
+                <a class="nav-link" data-page="enquiries-page-content">
+                    <span class="material-symbols-outlined">inbox</span><p class="text-sm font-medium">User Enquiries</p>
+                </a>
+                <a class="nav-link" data-page="reels-page-content">
+                    <span class="material-symbols-outlined">video_library</span><p class="text-sm font-medium">Instagram Reels</p>
+                </a>
+                  <a class="nav-link" data-page="youtube-page-content">
+                    <span class="material-symbols-outlined">video_library</span><p class="text-sm font-medium">Youtube Video</p>
+                </a>
+                <a class="nav-link" data-page="settings-page-content">
+                    <span class="material-symbols-outlined">settings</span><p class="text-sm font-medium">Settings</p>
+                </a>
+                 <a class="nav-link" href="../index.html">
+                    <span class="material-symbols-outlined">Home</span><p class="text-sm font-medium">Home Page</p>
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a class="nav-link" data-page="help-page-content">
+                    <span class="material-symbols-outlined">help_outline</span><p class="text-sm font-medium">Help</p>
+                </a>
+                <a class="nav-link" id="logout-link">
+                    <span class="material-symbols-outlined">logout</span><p class="text-sm font-medium">Logout</p>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <span class="mobile-header-title">Use Desktop for better experience</span>
+            </header>
+            
+            <div class="page-view-wrapper">
+                
+                <div id="dashboard-page-content" class="page-section active">
+                    <p class="reels-title" style="margin-bottom: 0.75rem;">Welcome back, Admin!</p> 
+                    
+                    <div class="summary-cards-grid">
+                        <div class="summary-card">
+                            <p class="summary-card-label">Total Products</p>
+                            <p class="summary-card-value" id="total-products-value">...</p> 
+                            <p class="summary-card-change">+12% from last month</p>
+                        </div>
+                        <div class="summary-card">
+                            <p class="summary-card-label">Reels Live</p>
+                            <p class="summary-card-value" id="total-reels-value">...</p>
+                            <p class="summary-card-change" id="reels-change-status">...</p>
+                        </div>
+                        <div class="summary-card">
+                            <p class="summary-card-label">Active Customers</p>
+                            <p class="summary-card-value">Coming Soon</p>
+                            <p class="summary-card-change">Coming Soon</p>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-actions-section card-container">
+                        <div class="actions-header"><h2 class="actions-title">Recent Actions</h2></div>
+                        <div class="actions-table-wrapper overflow-x-auto">
+                            <table class="actions-table"><thead><tr><th>ACTION</th><th>USER</th><th>ITEM</th><th>DATE</th><th>STATUS</th></tr></thead><tbody id="activity-list-body"></tbody></table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="products-page-content" class="page-section hidden">
+                    <h1 class="reels-title">Products</h1>
+                    <div class="product-content-grid">
+                        <div class="left-column">
+                            <div class="card-container add-product-card">
+                                <h2 class="product-form-title">Add New Product</h2>
+                                <form id="add-product-form" class="space-y-4" style="display: flex; flex-direction: column; row-gap: 1rem;">
+                                    <input type="hidden" id="edit-doc-id" value="">
+                                    <div class="form-grid-2"><label class="form-label"><p>Product Name *</p><input class="form-input" id="product-name" required></label>
+                                        <label class="form-label"><p>Product ID (SKU)</p><input class="form-input" id="product-id"></label></div>
+                                   
+                                        <div class="form-grid-2"><label class="form-label"><p>Brand *</p><input class="form-input" id="product-brand" required></label>
+                                        <label class="form-label"><p>Model Number</p><input class="form-input" id="product-modelNumber"></label></div>
+                                   
+                                        <div class="form-grid-2"><label class="form-label"><p>Category *</p><input class="form-input" id="product-category" required></label>
+                                        <label class="form-label"><p>Sub-Category</p><input class="form-input" id="product-subCategory"></label></div>
+                                   
+                                        <div class="form-grid-2"><label class="form-label"><p>MRP Price *</p><input class="form-input" id="product-priceMRP" type="number" required></label>
+                                        <label class="form-label"><p>Sale Price *</p><input class="form-input" id="product-priceSale" type="number" required></label></div>
+                                   
+                                        <div class="form-grid-2"><label class="form-label"><p>Stock Quantity *</p><input class="form-input" id="product-stockQty" type="number" required></label>
+                                        <label class="form-label"><p>In Stock?</p><select class="form-input" id="product-inStock"><option value="true" selected>Yes</option><option value="false">No</option></select></label></div>
+                                   
+                                        <label class="form-label"><p>Short Description</p><textarea class="form-textarea" rows="2" id="product-descriptionShort"></textarea></label>
+                                   
+                                        <label class="form-label"><p>Full Description</p><textarea class="form-textarea" rows="4" id="product-description"></textarea></label>
+                                   
+                                        <label class="form-label"><p>Highlights (comma-separated)</p><input class="form-input" id="product-highlights"></label>
+                                   
+                                        <div class="form-grid-2"><label class="form-label"><p>HSN Code</p><input class="form-input" id="product-hsn"></label>
+                                            <label class="form-label"><p>GST Rate (%)</p><input class="form-input" id="product-gstRate" type="number"></label></div>
+                                  
+                                            <label class="form-label"><p>Dimensions (Cm)</p><input class="form-input" id="product-dimensionsCm"></label>
+                                  
+                                            <label class="form-label"><p>Search Keywords (comma-separated)</p><input class="form-input" id="product-searchKeywords"></label>
+                                  
+                                            <label class="form-label"><p>Tags (comma-separated)</p><input class="form-input" id="product-tags"></label>
+                                  
+                                            <label class="form-label"><p>Status</p><select class="form-input" id="product-status"><option value="active" selected>Active</option><option value="inactive">Inactive</option><option value="draft">Draft</option></select></label>
+                                    <button class="add-product-submit" type="submit" id="product-submit-button">Add Product</button>
+                                </form>
+                            </div>
+                            <div class="card-container bulk-upload-card" style="margin-top: 1.5rem;">
+                                <h2 class="product-form-title">Bulk Upload (CSV/Excel)</h2>
+                                <form id="bulk-upload-form">
+                                    <div class="form-label"><p>Upload Product File</p><label for="bulk-product-file" class="file-drop-area"><span class="material-symbols-outlined">upload_file</span><span class="file-drop-text">Drag & drop file here</span><span class="file-drop-browse">Click to browse</span></label>
+                                        <input type="file" id="bulk-product-file" class="file-drop-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                        <p class="file-hint">Accepted formats: .csv, .xlsx</p>
+                                    </div>
+                                    <button type="submit" class="add-product-submit bulk-upload-submit" style="margin-top: 1rem;">Upload & Process File</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="right-column">
+                            <div class="card-container">
+                                <div class="product-table-header"><h2 class="product-table-title">All Products</h2><div class="search-input-wrapper"><span class="material-symbols-outlined">search</span><input class="form-input" id="product-search-input" placeholder="Search products..." type="text"/></div></div>
+                                <div class="overflow-x-auto"><table class="min-w-full product-table"><thead><tr><th>Product Name</th><th>Product ID</th><th>Sale Price</th><th>Actions</th></tr></thead><tbody id="productsTableBody"></tbody></table></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="enquiries-page-content" class="page-section hidden">
+                    <header class="enquiries-header">
+                        <div class="flex flex-col gap-1"><p class="reels-title" style="margin-bottom: 0.75rem;">User Enquiries</p><p id="enquiries-count" class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Loading enquiries...</p></div>
+                        <div class="search-enquiries-wrapper"><label class="form-label w-full"><div class="enquiries-search-input"><div class="icon-wrapper"><span class="material-symbols-outlined">search</span></div><input class="form-input" placeholder="Search by name, email, or message..." value=""/></div></label></div>
+                    </header>
+                    <div class="enquiries-table-wrapper">
+                        <div class="card-container" style="padding: 0;"><div class="overflow-x-auto"><table class="min-w-full product-table enquiries-table" style="border-collapse: collapse;"><thead><tr><th class="enq-col-name">Name</th><th class="enq-col-email">Email</th><th class="enq-col-phone">Phone</th><th class="enq-col-product">Product</th><th class="enq-col-productid">Product ID</th><th class="enq-col-message">Message</th><th class="enq-col-status">Status</th><th class="enq-col-timestamp">Timestamp</th><th class="enq-col-actions relative px-6 py-3"><span class="sr-only">Actions</span></th></tr></thead><tbody id="enquiriesTableBody"></tbody></table></div></div>
+                    </div>
+                </div>
+
+                <div id="reels-page-content" class="page-section hidden">
+                    <p class="reels-title" style="margin-bottom: 0.75rem;">Manage Instagram Reels</p>
+                    <form id="new-reel-form"><div class="reels-form-row">
+                        <label class="reels-link-input"><p>Paste Instagram Reel Link</p>
+                            <input class="form-input" id="reel-url-input" placeholder="e.g., https://www.instagram.com/reel/..." type="url" required/></label><div class="reels-add-button-wrapper"><button type="submit" class="reels-add-button"><span class="truncate">Add Reel</span></button></div></div></form>
+                    <h2 class="reels-preview-title">Live Preview of Reels</h2>
+                    <div id="reel-cards-container" class="reels-grid"></div>
+                </div>
+
+                <div id="youtube-page-content" class="page-section hidden">
+  <h2 class="reels-title">Manage YouTube Videos</h2>
+  
+  <form id="add-video-form" class="admin-form">
+    <h3>Add New Video</h3>
+    
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="video-title">Video Title</label>
+        <input type="text" id="video-title" placeholder="e.g., Best Kitchen Designs 2025" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="video-expert">Expert Name</label>
+        <input type="text" id="video-expert" value="Kripa Home Solutions" required>
+      </div>
+
+      <div class="form-group">
+        <label for="video-link">Video Link</label>
+        <input type="url" id="video-link" placeholder="https://www.youtube.com/watch?v=..." required>
+      </div>
+
+        <div class="form-group">
+        <label for="video-id">YouTube Video ID</label>
+        <input type="text" id="video-id" placeholder="Auto Read">
+      </div>
+    </div>
+    
+    <button type="submit" class="submit-btn">Add Video</button>
+  </form>
+  
+  <hr class="section-divider">
+  
+  <h3>Uploaded Videos</h3>
+  <div id="video-preview-list" class="preview-grid">
+    </div>
+</div>
+
+                <div id="settings-page-content" class="page-section hidden">
+                    <p class="reels-title" style="margin-bottom: 0.75rem;">Settings</p>
+                    <div class="settings-content"><h2 class="actions-title" style="margin-bottom: 1rem;">Account Settings</h2><p class="text-gray-500 dark:text-gray-400">Settings page content coming soon...</p></div>
+                </div>
+
+                <div id="help-page-content" class="page-section hidden">
+                    <div class="help-container">
+                        <p class="reels-title" style="margin-bottom: 0.75rem;">Admin Panel Help & Support</p>
+                        <p class="help-description">Welcome to the Admin Panel Help Center. Below you'll find guides on how to use the panel's features. If you encounter issues, please use the report buttons below.</p>
+                        <div class="help-section"><p class="reels-title" style="margin-bottom: 0.75rem;">How to Use the Admin Panel:</p><ul class="guide-list"><li>Managing Products: Click on "Products" to view, edit, or add new items. Use the "Add Product" button for new entries.</li><li>Managing Reels: Click on "Reels" to embed Instagram content. Paste the full reel link and click "Add Reel."</li><li>Reporting & Data: Access reports from the sidebar (if available) to view analytics.</li></ul></div>
+                        <div class="support-actions"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=abijithc140@gmail.com&su=Admin Panel Complaint/Issue" class="support-button complaint-button" target="_blank"><span class="material-symbols-outlined">contact_support</span>File a Complaint / Get Support</a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=abijithc140@gmail.com&su=BUG REPORT: Admin Panel Issue" class="support-button bug-report-button" target="_blank"><span class="material-symbols-outlined">bug_report</span>Report a Bug</a></div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+        <div class="sidebar-overlay"></div>
+
+    </div>
+    
+    <script src="assets/admin-dashboard.js" type="module"></script>
+</body>
+</html>

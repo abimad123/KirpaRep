@@ -1,0 +1,1569 @@
+     :root {
+            --color-primary: #4A90E2;
+            --color-background-light: #F5F5F5;
+            --color-background-dark: #101922;
+            --color-success: #50E3C2;
+            --color-warning: #F5A623;
+            --color-error: #D0021B;
+            --color-text-light: #333333;
+            --color-text-dark: #E5E7EB;
+            --color-gray-50: #F9FAFB;
+            --color-gray-200: #E5E7EB;
+            --color-gray-300: #D1D5DB;
+            --color-gray-400: #9CA3AF;
+            --color-gray-500: #6B7280;
+            --color-gray-700: #374151;
+            --color-gray-800: #1F2937;
+            --color-gray-900: #111827;
+        }
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background-light, #f8f9fa);
+    /* Ensure the body itself doesn't scroll horizontally */
+    overflow-x: hidden; 
+    min-height: 100vh;
+}
+
+/* 🎯 FIX 1: Use Flex to align sidebar and main content side-by-side */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 16rem; /* Fixed width for the menu */
+    background-color: white; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
+    display: flex; 
+    flex-direction: column; 
+    flex-shrink: 0; /* Prevents sidebar from shrinking */
+    
+    /* 🎯 FIX 2: Make the sidebar sticky for full-height effect */
+    position: sticky; 
+    top: 0;
+    height: 100vh; /* Critical: Ensure the sidebar is full height */
+    
+    z-index: 1001; 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.main-content {
+    flex-grow: 1; /* Takes the rest of the available horizontal space */
+    width: 100%; /* Allows it to occupy all remaining width */
+    background-color: var(--color-background-light, #f8f9fa); 
+    /* Remove padding here, it should be in the internal wrapper */
+}
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 1.5rem; /* Default size for icons */
+        }
+
+        /* --- Layout --- */
+        .flex-h-screen {
+            display: flex;
+            height: 100vh; /* h-screen */
+        }
+
+
+.mobile-header-title {
+    display: none; 
+}
+
+.main-header {
+    /* Main header goes across the top of the main content area */
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.page-view-wrapper {
+    /* Contains all page sections (Dashboard, Products, etc.) */
+    padding: 1.5rem; 
+}
+
+
+/* ========================================= */
+/* --- 2. SIDEBAR ELEMENTS --- */
+/* ========================================= */
+
+/* Sidebar Logo/Header Area */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; 
+    padding: 1rem; 
+    border-bottom: 1px solid var(--color-gray-200); 
+}
+
+.sidebar-logo-img {
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 9999px; 
+    width: 3.5rem; 
+    height: 3.5rem;
+}
+.user-text .name {
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+.user-text .role {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+    flex: 1 1 0%; 
+    padding: 1rem 0.5rem; 
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem; 
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; 
+    padding: 0.6rem 0.75rem; 
+    border-radius: 0.5rem; 
+    cursor: pointer;
+    transition: background-color 0.1s, color 0.1s;
+    color: var(--color-text-light); 
+    text-decoration: none; 
+}
+
+.nav-link p {
+    font-size: 0.875rem; 
+    font-weight: 500; 
+}
+
+.nav-link:hover {
+    background-color: var(--color-gray-100); 
+}
+
+/* Active Link Styles */
+.nav-link.active-link {
+    background-color: rgba(74, 144, 226, 0.15); /* Primary/15 */
+    color: var(--color-primary); 
+}
+.nav-link.active-link .material-symbols-outlined { 
+     color: var(--color-primary); 
+}
+
+/* Icon Colors */
+.nav-link .material-symbols-outlined { 
+    color: var(--color-gray-500);
+    transition: color 0.1s;
+}
+.nav-link:hover .material-symbols-outlined {
+     color: var(--color-text-dark);
+}
+
+/* Sidebar Bottom Links */
+.sidebar-bottom {
+    padding: 1rem 0.5rem; 
+    margin-top: auto; 
+    border-top: 1px solid var(--color-gray-200); 
+}
+
+/* Sidebar Toggle Button (Hamburger) */
+.sidebar-toggle-btn {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    margin-right: 1rem;
+    color: rgb(81, 81, 104);
+}
+.sidebar-toggle-btn .material-symbols-outlined {
+    font-size: 3rem;
+}
+
+.sidebar-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1000; 
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ========================================= */
+/* --- 2. MOBILE OFFCANVAS & RESPONSIVENESS --- */
+/* ========================================= */
+
+.sidebar-toggle-btn {
+    display: none; /* Hidden on desktop */
+    /* ... existing button styles ... */
+}
+
+.sidebar-overlay {
+    display: none; /* Hidden by default */
+    /* ... existing overlay styles ... */
+}
+
+@media (max-width: 1024px) {
+    .mobile-header-title {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #020202;
+        margin-left: 0.5rem; 
+    }
+    
+    .sidebar {
+        position: fixed; /* Override sticky/block to go off-canvas */
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%); 
+        width: 80%; 
+        max-width: 280px; 
+    }
+
+    .main-content {
+         /* Content takes full width on mobile, ignoring fixed sidebar */
+         width: 100%; 
+    }
+    
+    .sidebar-toggle-btn {
+        display: block; /* Show hamburger button */
+    }
+
+    .page-view-wrapper {
+        padding: 1rem; /* Adjust internal content padding for mobile */
+    }
+
+    /* Styles when sidebar is open on mobile */
+    .app-container.sidebar-open .sidebar {
+        transform: translateX(0); /* Slide in */
+    }
+    .app-container.sidebar-open .sidebar-overlay {
+        display: block; 
+        opacity: 1; 
+    }
+}
+
+/* ========================================= */
+/* --- 4. DASHBOARD/PAGE SPECIFIC STYLES --- */
+/* ========================================= */
+
+/* Generic Page Section Visibility */
+.page-section.hidden {
+    display: none !important;
+}
+.page-section.active {
+    display: block;
+}
+
+/* Summary Cards Grid */
+.summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card-label {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    margin-bottom: 0.5rem;
+}
+
+.summary-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.summary-card-change {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-success);
+    margin-top: 0.5rem;
+}
+        /* Top Bar (Header) */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--color-gray-200); /* border-b border-solid border-gray-200 */
+            padding: 0.75rem 1.5rem; /* px-6 py-3 */
+            background-color: white; /* bg-white */
+            flex-shrink: 0; /* Prevent header from shrinking */
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem; /* gap-4 */
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* gap-3 */
+        }
+
+        .user-avatar {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            aspect-ratio: 1 / 1;
+            border-radius: 9999px; /* rounded-full */
+            width: 2.5rem; /* size-10 (40px) */
+            height: 2.5rem;
+        }
+
+        .user-text {
+            font-size: 0.875rem; /* text-sm */
+        }
+
+        .user-text .name {
+            font-weight: 500; /* font-medium */
+            color: var(--color-text-light);
+        }
+
+        .user-text .role {
+            color: var(--color-gray-500); /* text-gray-500 */
+            font-size: 0.8125rem; /* slightly smaller text */
+        }
+
+        /* --- Page Content Container --- */
+        .page-content-container {
+            flex: 1 1 0%; /* flex-1 */
+            padding: 1.5rem; /* p-6 */
+            overflow-y: auto;
+        }
+
+        /* --- Page Sections (Tabbed Content) --- */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+        /* Summary Cards Grid */
+        .summary-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+            gap: 1.5rem; /* gap-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .summary-cards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+            }
+        }
+
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .summary-cards-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* lg:grid-cols-3 */
+            }
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background-color: white; /* bg-white */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem; /* gap-2 */
+        }
+
+        .summary-card-label {
+            color: var(--color-text-light);
+            font-size: 1rem; /* text-base */
+            font-weight: 500; /* font-medium */
+        }
+
+        .summary-card-value {
+            color: var(--color-text-light);
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            line-height: 1.2;
+        }
+
+        .summary-card-change {
+            color: var(--color-success); /* text-success */
+            font-size: 1rem; /* text-base */
+            font-weight: 500;
+        }
+    
+       /* --- RECENT ACTIONS LIST STYLES --- */
+
+.recent-actions-section {
+    /* Inherit card styles, e.g., padding: 1.5rem, background, shadow */
+    padding: 1.5rem;
+    background-color: white; 
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.actions-header {
+    border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.actions-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.recent-actions-list {
+    list-style: none; /* Remove default list markers */
+    padding: 0;
+    margin: 0;
+}
+
+.action-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--color-gray-100, #f3f4f6);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--color-gray-700, #374151);
+}
+
+.action-item:last-child {
+    border-bottom: none; /* Remove border from the last item */
+}
+
+.action-summary {
+    display: block;
+}
+
+.action-summary strong {
+    font-weight: 700;
+    margin-right: 0.25rem;
+}
+
+.action-user {
+    font-weight: 500;
+    color: var(--color-primary); /* Highlight the user/admin name */
+}
+
+.action-time {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-gray-500, #6b7280);
+    margin-top: 0.25rem;
+}
+/* --- ACTIONS TABLE STYLES --- */
+
+.actions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.actions-table thead th {
+    /* Header text style */ 
+    /* ... other desktop styles ... */
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem; 
+    font-weight: 600;
+    color: var(--color-gray-500, #000000);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    
+    text-align: left;
+    white-space: nowrap;
+}
+
+.actions-table tbody td {
+    /* Body cell style */
+    padding: 1rem 1.5rem;
+    color: #000000;
+    border-bottom: 1px solid var(--color-gray-100, #f3f4f6);
+}
+
+.actions-table tbody tr:hover {
+    background-color: var(--color-gray-50, #f9fafb);
+}
+
+.actions-table td:nth-child(3) {
+    /* Item column - allow some overflow protection */
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    /* FIX 1: Reduce padding across all cells for small screens */
+    .actions-table thead th,
+    .actions-table tbody td {
+        padding: 0.5rem 0.5rem; 
+        font-size: 0.7rem; /* Smaller font size on mobile */
+    }
+
+    /* FIX 2: Force narrow widths for non-critical columns */
+    .actions-table thead th:nth-child(1), /* ACTION header */
+    .actions-table tbody td:nth-child(1) { /* ACTION cell */
+        width: 15%;
+        min-width: 80px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 600; /* Keep action bold */
+    }
+    
+    .actions-table thead th:nth-child(2), /* USER header */
+    .actions-table tbody td:nth-child(2) { /* USER cell (Email) */
+        width: 30%;
+        min-width: 150px;
+        /* Force email/long user text to wrap or hide excess */
+        white-space: normal; 
+        word-break: break-all;
+    }
+
+    /* FIX 3: Constraint ITEM column (3rd child) */
+    .actions-table thead th:nth-child(3), /* ITEM header */
+    .actions-table tbody td:nth-child(3) { /* ITEM cell */
+        width: 40%;
+        min-width: 150px; 
+        white-space: normal; /* Allow item text to wrap */
+        word-break: break-word;
+    }
+    
+    /* FIX 4: Hide DATE and STATUS columns (4th and 5th child) to save horizontal space */
+    .actions-table thead th:nth-child(4), 
+    .actions-table tbody td:nth-child(4),
+    .actions-table thead th:nth-child(5), 
+    .actions-table tbody td:nth-child(5) {
+        display: none; /* Hide DATE and STATUS on very small screens */
+    }
+    
+    /* Re-introduce hidden DATE and STATUS columns on slightly wider mobile views */
+    @media (min-width: 450px) {
+        .actions-table thead th:nth-child(4), 
+        .actions-table tbody td:nth-child(4) {
+            display: table-cell; /* Show DATE */
+            width: 80px;
+            min-width: 80px;
+        }
+    }
+}
+
+/* --- STATUS BADGE STYLES --- */
+
+.status-badge {
+    display: inline-flex;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Colors based on common dashboard practice (and your image) */
+.status-badge.shipped { /* Mapped from 'Order Update' example */
+    background-color: rgba(80, 227, 194, 0.15); /* Greenish/Success */
+    color: var(--color-success, #50E3C2);
+}
+.status-badge.added { /* Mapped from 'New Customer' example */
+    background-color: rgba(74, 144, 226, 0.15); /* Blue/Primary */
+    color: var(--color-primary, #4A90E2);
+}
+.status-badge.updated { /* Mapped from 'Product Change' example */
+    background-color: rgba(255, 179, 0, 0.15); /* Orange/Warning */
+    color: #FFAA00;
+}
+.status-badge.deleted {
+    background-color: rgba(208, 2, 27, 0.15); /* Red/Error */
+    color: var(--color-error, #D0021B);
+}
+.status-badge.contact, .status-badge.info {
+    background-color: rgba(150, 150, 150, 0.15); 
+    color: var(--color-gray-600, #6b7280);
+}
+
+        
+        /* Products Page Layout */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+            gap: 2rem; /* gap-8 */
+        }
+        
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* lg:grid-cols-3 */
+            }
+            .products-grid > :nth-child(2) {
+                grid-column: span 2 / span 2; /* lg:col-span-2 */
+            }
+        }
+
+/* --- Form Layout and Structure --- */
+.card-container {
+    /* Styles for the card background and shadow */
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box; /* Ensure padding is inside the width */
+}
+
+
+
+/* ------------------------------------------------------------- */
+/* --- 1. PRODUCT PAGE LAYOUT & GRID STRUCTURE (Mobile Fix) --- */
+/* ------------------------------------------------------------- */
+.product-content-grid {
+    display: grid;
+    gap: 1.5rem; 
+    /* Default to single column on mobile, explicit definition removed as media query handles it */
+    margin-top: 1rem;
+}
+
+/* Base Form Grid (2 columns on Desktop) */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+/* 🎯 FIX: Force Form Grids to single column on mobile */
+@media (max-width: 768px) {
+    .form-grid-2 {
+        grid-template-columns: 1fr; /* Stack columns vertically on small screens */
+        gap: 0; /* Optional: Remove gap to save vertical space */
+    }
+    
+    /* Ensure the labels in stacked grids maintain proper vertical spacing */
+    .form-grid-2 .form-label {
+        margin-bottom: 1rem;
+    }
+    
+    /* Remove bottom margin from the last label in the grid */
+    .form-grid-2 .form-label:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* --- PRODUCTS PAGE LAYOUT (Desktop) --- */
+@media (min-width: 1024px) {
+    .product-content-grid {
+        /* Set desktop grid: Left column (2 parts) to Right column (2 parts) */
+        grid-template-columns: 2fr 2fr; 
+        align-items: start; 
+    }
+    .left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: sticky; 
+        top: 1.5rem; 
+    }
+    /* Ensure form grids are 2 columns on desktop */
+    .form-grid-2 {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 1rem;
+    }
+}
+
+/* ------------------------------------------------------------- */
+/* --- 2. EXISTING STYLES (NO CHANGES NEEDED) --- */
+/* ------------------------------------------------------------- */
+
+/* Product Form Titles */
+.product-form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+}
+
+/* Form Labels (Standard) */
+.form-label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-label p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    line-height: 1.25rem;
+    height: 1.5rem;
+    padding-bottom: 0;
+    margin-bottom: 0.25rem;
+}
+
+/* Input/Textarea Styles */
+.form-input, .form-textarea {
+    width: 100%;
+    resize: none;
+    box-sizing: border-box; 
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-gray-300, #d1d5db);
+    background-color: var(--color-background-light, white); 
+    color: var(--color-text-light, #374151);
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: 0;
+    border-color: var(--color-primary, #4a90e2);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);  
+}
+
+.form-input {
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.form-textarea {
+    padding: 1rem;
+    resize: vertical;
+}
+
+/* Bulk Upload Dropzone */
+.file-drop-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border: 2px dashed var(--color-gray-300, #d1d5db);
+    border-radius: 0.5rem;
+    background-color: var(--color-background-light-alt, #f9fafb); 
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.file-drop-input {
+    display: none;
+}
+
+/* ... keep the rest of the product table/search/button CSS unchanged ... */
+
+
+
+
+/* Input Placeholders */
+.form-input::placeholder, .form-textarea::placeholder {
+    color: var(--color-gray-400, #9ca3af);
+}
+
+/* --- Add Product Button --- */
+.add-product-submit {
+    /* Button styling */
+    margin-top: 1rem; /* Space from textarea */
+    width: 100%;
+    background-color: var(--color-primary, #4a90e2);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.15s;
+    border: none;
+    cursor: pointer;
+}
+
+.add-product-submit:hover {
+    background-color: rgba(74, 144, 226, 0.9);
+}
+
+
+/* 🎯 NEW: Set a max width on the actions column */
+.product-table th:last-child, 
+.product-table td:last-child {
+    width: 100px; /* Fixed width for the actions column */
+}
+
+.product-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-input-wrapper .material-symbols-outlined {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+}
+
+.search-input-wrapper input {
+    width: 16rem;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-gray-300);
+}
+
+/* 🎯 NEW: Image sizing and styling */
+.product-img {
+    width: 2.5rem; /* w-10 (40px) */
+    height: 2.5rem; /* h-10 (40px) */
+    border-radius: 0.5rem;
+    object-fit: cover;
+    display: block; /* Ensures proper sizing */
+    margin: 0 auto; /* Center the image */
+}
+
+/* 🎯 UPDATED: Product Table Specifics */
+.product-table th, .product-table td {
+    padding: 1rem 1rem; /* py-4 px-4 */
+    white-space: nowrap;
+    /* Vertically align image/content in the middle */
+    vertical-align: middle; 
+    border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+}
+
+/* Center content in the first column (Image) */
+.product-table td:first-child {
+    text-align: center;
+    /* ❌ Removed incorrect width: 10px; here */
+}
+
+/* 🎯 NEW: Right align price data cells */
+.product-table td:nth-child(5) {
+    text-align: right;
+}
+
+.product-table th {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+}
+
+.product-table th:last-child {
+    text-align: center !important; /* Center the Actions header */
+}
+
+.product-table th:nth-child(5) {
+    text-align: right !important; /* Right align the Sale Price header */
+}
+/* ... rest of your dark mode styles if needed ... */
+
+.product-table tbody tr td:nth-child(2) {
+    font-weight: 500;
+    color: var(--color-gray-900);
+}
+
+.product-table .actions-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center; /* Center the buttons within the cell */
+    align-items: center;
+}
+
+.product-table .actions-buttons button {
+    color: var(--color-primary);
+    transition: color 0.15s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.product-table .actions-buttons button:hover {
+    color: rgba(74, 144, 226, 0.8);
+}
+
+.product-table .actions-buttons button:last-child {
+    color: var(--color-error);
+}
+
+.product-table .actions-buttons button:last-child:hover {
+    color: rgba(208, 2, 27, 0.8);
+}
+
+
+/* --- MODIFIED: Form Label <p> --- */
+.form-label p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    line-height: 1.25rem;
+    height: 1.5rem;
+    /* 🎯 MODIFIED: Use margin instead of padding for better spacing with new elements */
+    padding-bottom: 0;
+    margin-bottom: 0.25rem;
+}
+
+/* --- FILE INPUT STYLES (REPLACED) --- */
+.form-file-input {
+  /* 🎯 MODIFIED: We hide the original input completely now */
+  display: none; 
+}
+
+
+
+.file-drop-area:hover {
+    background-color: var(--color-background-light, white);
+    border-color: var(--color-primary, #4a90e2);
+}
+
+.file-drop-area .material-symbols-outlined {
+    font-size: 2.5rem; /* Large icon */
+    color: var(--color-gray-400, #9ca3af);
+    transition: color 0.15s;
+}
+
+.file-drop-area:hover .material-symbols-outlined {
+    color: var(--color-primary, #4a90e2);
+}
+
+.file-drop-area .file-drop-text {
+    font-size: 0.875rem;
+    color: var(--color-text-light, #374151);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.file-drop-area .file-drop-browse {
+    font-size: 0.75rem;
+    color: var(--color-primary, #4a90e2);
+    font-weight: 600;
+}
+
+/* This is the actual <input type="file">, which we now hide */
+.file-drop-input {
+    display: none;
+}
+
+/* Adjust the hint text to be closer to the dropzone */
+.bulk-upload-card .file-hint {
+    margin-top: 0.5rem;
+    padding-left: 0.125rem; /* Keep existing style if you like */
+} 
+
+
+.enquiries-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.search-enquiries-wrapper {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .search-enquiries-wrapper {
+        width: 20rem; /* md:w-80 */
+    }
+}
+
+.enquiries-search-input {
+    display: flex;
+    width: 100%;
+    height: 3rem; /* h-12 */
+    border-radius: 0.5rem;
+}
+
+.enquiries-search-input .icon-wrapper {
+    color: var(--color-gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    border: 1px solid var(--color-gray-300);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background-color: white;
+}
+
+.enquiries-search-input input {
+    /* Assuming form-input class handles the bulk of the styling */
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding-left: 0.5rem; /* pl-2 */
+    height: 100%;
+    border-left: 0;
+}
+
+/* ------------------------------------------------------------- */
+/* --- ENQUIRIES TABLE STRUCTURE & GENERAL STYLES --- */
+
+.enquiries-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.enquiries-table-wrapper .card-container {
+    padding: 0;
+}
+
+/* Apply padding to all TH and TD elements specifically for enquiries */
+.enquiries-table th {
+    padding: 0.75rem 1.5rem;
+}
+
+.enquiries-table td {
+    padding: 1rem 1.5rem;
+}
+
+/* Row hover effect */
+.enquiries-table-wrapper tbody tr:hover {
+    background-color: var(--color-gray-50); /* hover:bg-gray-50 */
+}
+
+/* ------------------------------------------------------------- */
+/* --- COLUMN WIDTHS AND WRAPPING FIXES (Using dedicated classes) --- */
+
+.enquiries-table th {
+    padding: 0.75rem 0.5rem; /* Reduced horizontal padding (e.g., from 1.5rem to 0.5rem) */
+    white-space: nowrap; 
+}
+
+.enquiries-table td {
+    padding: 1rem 0.5rem; /* Reduced horizontal padding */
+    vertical-align: middle; 
+}
+
+.enquiries-table .enq-col-name {
+    /* Giving Name column more room to appear */
+    min-width: 100px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.enquiries-table .enq-col-email {
+    /* 🎯 FIX 2: Constrain Email width more aggressively and allow wrapping */
+    min-width: 140px; 
+    max-width: 180px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all; /* Ensure long emails break */
+}
+
+.enquiries-table .enq-col-phone {
+    width: 110px;
+    min-width: 100px;
+}
+.enquiries-table .enq-col-message {
+    /* Allow wrapping for long messages, this is usually the culprit */
+    max-width: 250px;
+    min-width: 180px;
+    white-space: normal !important; 
+    word-break: break-word;
+}
+.enquiries-table .enq-col-timestamp {
+    width: 150px;
+    min-width: 140px;
+}
+
+/* 🎯 FIX 3: Ensure Actions column is tightly contained */
+.enquiries-table .enq-col-actions {
+    width: 90px; /* Constrain fixed width */
+    min-width: 90px;
+    text-align: center;
+    padding-right: 0.5rem !important; /* Reduced padding here too */
+    padding-left: 0.5rem !important;
+}
+
+.enquiries-table td.enq-col-actions {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+}
+
+
+/* ------------------------------------------------------------- */
+/* --- ACTIONS COLUMN INTERACTION STYLES --- */
+
+.enquiries-table-wrapper .actions-column {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 0.5rem; /* gap-2 */
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 100%;
+}
+
+.enquiries-table-wrapper tbody tr:hover .actions-column {
+    opacity: 1; /* group-hover:opacity-100 */
+}
+
+.enquiries-table-wrapper .actions-column button {
+    padding: 0.5rem; /* p-2 */
+    border-radius: 9999px; /* rounded-full */
+    transition: background-color 0.15s;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.enquiries-table-wrapper .actions-column button.read {
+    color: var(--color-success);
+}
+
+.enquiries-table-wrapper .actions-column button.read:hover {
+    background-color: rgba(80, 227, 194, 0.1); /* hover:bg-success/10 */
+}
+
+.enquiries-table-wrapper .actions-column a.reply, /* Anchor tags for mailto */
+.enquiries-table-wrapper .actions-column button.reply {
+    color: var(--color-primary);
+}
+
+.enquiries-table-wrapper .actions-column a.reply:hover,
+.enquiries-table-wrapper .actions-column button.reply:hover {
+    background-color: rgba(74, 144, 226, 0.1); /* hover:bg-primary/10 */
+}
+
+.enquiries-table-wrapper .actions-column button.delete {
+    color: var(--color-error);
+}
+
+.enquiries-table-wrapper .actions-column button.delete:hover {
+    background-color: rgba(208, 2, 27, 0.1); /* hover:bg-error/10 */
+}
+
+        /* Reels Page Specifics */
+        .reels-title {
+            color: var(--color-text-light);
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 900; /* font-black */
+            line-height: 1.2;
+            letter-spacing: -0.033em;
+        }
+
+      /* --- BASE MOBILE STYLES (Default for small screens) --- */
+.reels-form-row {
+    display: flex;
+    flex-direction: column; /* Stacks the label and button vertically */
+    align-items: flex-start; /* 🎯 FIX: Align elements to the left (start) */
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%; /* Ensure the row uses full width */
+}
+
+.reels-link-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* 🎯 FIX: Input container takes full width */
+    flex: 1 1 auto; /* Allows input to stretch on desktop if needed, but not restrict mobile */
+}
+
+.reels-link-input p {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+}
+
+.reels-link-input input {
+    height: 3.5rem;
+    padding: 0.9375rem;
+    width: 100%; /* Ensure the actual input element takes 100% of its container */
+}
+
+.reels-add-button-wrapper {
+    display: flex;
+    justify-content: flex-start; /* Align button to the left */
+    width: 100%; /* 🎯 FIX: Wrapper takes full width to allow button alignment */
+}
+
+.reels-add-button {
+    /* Keep existing button styles */
+    display: flex;
+    min-width: 5.25rem;
+    max-width: 30rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    height: 3.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background-color 0.15s;
+    /* Remove width properties, let min-width/padding handle size */
+}
+
+.reels-add-button:hover {
+    background-color: rgba(74, 144, 226, 0.9);
+}
+
+
+/* --- DESKTOP/TABLET STYLES (min-width: 768px) --- */
+@media (min-width: 768px) {
+    .reels-form-row {
+        flex-direction: row; /* Horizontal layout */
+        align-items: flex-end; /* Align elements to the bottom */
+    }
+
+    .reels-link-input {
+        flex: 1 1 0%; /* Allow input to take up maximum available space */
+    }
+    
+    .reels-add-button-wrapper {
+        width: auto; /* Allow the button wrapper to shrink to button size */
+    }
+}
+        
+        .reels-preview-title {
+            color: var(--color-text-light);
+            font-size: 1.375rem; /* text-[22px] */
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.015em;
+            padding-bottom: 0.75rem; /* pb-3 */
+            padding-top: 1.25rem; /* pt-5 */
+        }
+        
+      /* Reels Grid */
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem; /* gap-6 */
+    /* 🎯 FIX: Ensure grid items (reel-cards) are vertically aligned and start at the top */
+    align-items: start; 
+}
+
+@media (min-width: 640px) {
+    .reels-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .reels-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* --- Reel Card Specifics --- */
+
+/* Reels Card */
+.reel-card {
+    position: relative;
+    border-radius: 0.75rem;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    height: auto; 
+}
+
+.reel-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 80%;
+    
+    box-sizing: content-box; 
+}
+
+.reel-iframe-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+/* ... rest of the CSS (reels-grid, buttons, etc.) remains the same ... */
+
+.reel-delete-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.reel-card:hover .reel-delete-button {
+    opacity: 1;
+}
+
+        /* Settings Page */
+        .settings-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+        }
+
+
+
+        /*
+  =====================================
+  ADMIN FORM & PREVIEW GRID STYLES
+  =====================================
+*/
+
+
+
+/* Form Styling */
+.admin-form {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-form h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.submit-btn {
+  background-color: #007bff; /* Blue */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Divider */
+.section-divider {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 30px 0;
+}
+
+/* Preview Grid Styling */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.video-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  overflow: hidden; /* To keep the iframe corners rounded */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-card-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* For 16:9 videos */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.video-card-info {
+  padding: 15px;
+  flex-grow: 1;
+}
+
+.video-card-info h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  /* Elipsis for long titles */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-card-info p {
+  font-size: 0.9em;
+  margin: 5px 0;
+  color: #333;
+}
+
+.video-card-info a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+.video-card-info a:hover {
+  text-decoration: underline;
+}
+
+/* Delete Button */
+.delete-video-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.delete-video-btn:hover {
+  background-color: #e60023; /* Red */
+  opacity: 1;
+}
+
+        /* --- Help Page Container --- */
+.help-container {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 2rem auto; /* Center the help card on the page */
+}
+
+
+.help-description {
+    font-size: 1rem;
+    color: var(--color-gray-600, #4b5563);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Guide Section --- */
+.help-section {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray-200, #e5e7eb);
+}
+.guide-list {
+    list-style: disc;
+    margin-left: 1.5rem;
+    padding-left: 0;
+    font-size: 0.9375rem;
+    color: var(--color-gray-700, #374151);
+    line-height: 1.6;
+}
+
+/* --- Support Actions (Buttons) --- */
+.support-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    margin-top: 1.5rem;
+}
+
+.support-button {
+    /* Base button styling */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none; /* Remove underline from anchor tags */
+    white-space: nowrap;
+    transition: background-color 0.15s, transform 0.15s;
+}
+
+.support-button .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+.complaint-button {
+    /* Blue button for general complaints/support */
+    background-color: var(--color-primary, #4a90e2);
+    color: white;
+}
+
+.complaint-button:hover {
+    background-color: rgba(74, 144, 226, 0.9);
+    transform: translateY(-1px);
+}
+
+.bug-report-button {
+    /* Red button for urgent bug reports */
+    background-color: var(--color-error, #d0021b);
+    color: white;
+}
+
+.bug-report-button:hover {
+    background-color: rgba(208, 2, 27, 0.9);
+    transform: translateY(-1px);
+}

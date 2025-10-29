@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+    <style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; 
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.login-form-section {
+    flex: 1;
+    padding: 8rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-content {
+    width: 100%;
+    max-width: 400px; 
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+#email-login-form .form-group {
+    margin-bottom: 1rem;
+}
+
+#email-login-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+#email-login-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+#email-login-form input:focus {
+     border-color: #80bdff;
+     outline: 0;
+     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #6c63ff; 
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #5a52e0; 
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.signup-link a {
+    color: #6c63ff; 
+    text-decoration: none;
+    font-weight: 600;
+}
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #dc3545; 
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    min-height: 1.2em; 
+}
+
+.login-image-section {
+    flex: 1;
+    background-image: url('../assets/img/logo.png');
+    background-size: cover;
+    background-position: center;
+}
+.password-group .password-input-wrapper {
+    position: relative; 
+    display: flex; 
+}
+
+.password-group input[type="password"],
+.password-group input[type="text"] { 
+    width: 100%;
+    padding-right: 3rem; 
+    padding-left: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: #6c757d; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password .material-symbols-outlined {
+    font-size: 1.25rem; 
+}
+
+@media (max-width: 992px) {
+    .login-image-section {
+        display: none; 
+    }
+    .login-form-section {
+         padding: 3rem 1.5rem;
+    }
+     .login-container {
+        width: 100%;
+        max-width: 500px; 
+        margin: 2rem;
+    }
+}
+    </style>
+<body>
+<div class="login-container">
+        <div class="login-form-section">
+            <div class="login-content">
+                <h1>Sign In</h1>
+                <p class="subtitle">Sign in with your account</p>
+
+                <form id="email-login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="kirpahomesolutions@gmail.com" required>
+                    </div>
+                    <div class="form-group password-group">
+                        <label for="password">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="password" placeholder="••••••••" required>
+                            <button type="button" id="togglePasswordVisibility" class="toggle-password">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Get Started</button>
+                </form>
+                <p class="signup-link">
+                 Get to the Kirpa Admin Panel<br>
+                 <a href="../index.html">Back to Main</a>
+                    <!-- <a href="#">Sign up</a> -->
+
+                </p>
+                 <p id="error-message" class="error-message"></p>
+            </div>
+        </div>
+
+        <div class="login-image-section"> </div>
+    </div>
+    <script src="assets/admin-auth.js" type="module"></script>
+
+</body>
+</html>

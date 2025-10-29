@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Kripa Home Solutions</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+
+html, body {
+  font-family: 'Work Sans', sans-serif;
+}
+
+:root {
+  /* Colors from your image */
+  --color-primary: #F57622;
+  --color-primary-rgb: 245, 118, 34;
+
+  --color-background-light: #F9F9F9; /* For 'Core Values' bg */
+  --color-background-light-rgb: 249, 249, 249;
+
+  --color-background-dark: #2a2a2a; /* Placeholder for dark mode */
+  --color-background-dark-rgb: 42, 42, 42;
+
+  --color-text-dark: #333333; /* Main body text */
+  --color-text-dark-rgb: 51, 51, 51;
+
+  --color-text-light: #f1f1f1; /* Placeholder for dark mode */
+  --color-text-light-rgb: 241, 241, 241;
+}
+
+
+/*
+  ==========================================================================
+   2. Global Styles (Replicating Tailwind Base)
+  ==========================================================================
+*/
+
+/* A basic CSS reset and box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  ==========================================================================
+   3. Utility & Layout Classes
+  ==========================================================================
+*/
+
+/* Container class */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;  /* px-6 */
+  padding-right: 1.5rem; /* px-6 */
+}
+
+/* Responsive container widths */
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/*
+  ==========================================================================
+   4. Component Styles (Based on your HTML)
+  ==========================================================================
+*/
+
+/* --- Section 1: Hero --- */
+.hero-section {
+  position: relative;
+  height: 560px;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* bg-black/50 */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero-title {
+  font-size: 2.25rem; /* text-4xl */
+  line-height: 2.5rem;
+  font-weight: 800; /* font-extrabold */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.hero-subtitle {
+  margin-top: 1rem; /* mt-4 */
+  max-width: 48rem; /* max-w-3xl */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.125rem; /* text-lg */
+  color: rgba(255, 255, 255, 0.9); /* text-white/90 */
+}
+
+/* Responsive styles for Hero */
+@media (min-width: 768px) { /* md: */
+  .hero-title {
+    font-size: 3.75rem; /* md:text-6xl */
+    line-height: 1;
+  }
+}
+
+/* --- Section 2: Story --- */
+.story-section {
+  padding-top: 4rem; /* py-16 */
+  padding-bottom: 4rem;
+}
+
+.story-grid {
+  display: grid;
+  align-items: center;
+  gap: 3rem; /* gap-12 */
+}
+
+.story-text {
+  order: 2; /* order-2 */
+}
+
+.story-title {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 700; /* font-bold */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.story-paragraph {
+  margin-top: 1.5rem; /* mt-6 */
+  font-size: 1.125rem; /* text-lg */
+  line-height: 2rem; /* leading-8 */
+  color: rgba(var(--color-text-dark-rgb), 0.7); /* text-background-dark/70 */
+}
+
+.dark .story-paragraph {
+  color: rgba(var(--color-text-light-rgb), 0.7); /* dark:text-background-light/70 */
+}
+
+.story-image-wrapper {
+  order: 1; /* order-1 */
+  height: 20rem; /* h-80 */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-xl */
+}
+
+.story-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Responsive styles for Story */
+@media (min-width: 640px) { /* sm: */
+  .story-section {
+    padding-top: 6rem; /* sm:py-24 */
+    padding-bottom: 6rem;
+  }
+  .story-title {
+    font-size: 2.25rem; /* sm:text-4xl */
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) { /* lg: */
+  .story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* lg:grid-cols-2 */
+    gap: 4rem; /* lg:gap-16 */
+  }
+  .story-text {
+    order: 1; /* lg:order-1 */
+  }
+  .story-image-wrapper {
+    order: 2; /* lg:order-2 */
+    height: auto; /* lg:h-auto */
+    aspect-ratio: 4 / 3; /* lg:aspect-[4/3] */
+  }
+}
+
+/* --- Section 3: Values --- */
+.values-section {
+  background-color: var(--color-background-light); /* bg-background-light */
+  padding-top: 4rem; /* py-16 */
+  padding-bottom: 4rem;
+}
+
+.dark .values-section {
+  background-color: rgba(var(--color-background-dark-rgb), 0.5); /* dark:bg-background-dark/50 */
+}
+
+.values-header {
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.values-title {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 700; /* font-bold */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.values-subtitle {
+  margin-top: 1rem; /* mt-4 */
+  font-size: 1.125rem; /* text-lg */
+  color: rgba(var(--color-text-dark-rgb), 0.7); /* text-background-dark/70 */
+}
+
+.dark .values-subtitle {
+  color: rgba(var(--color-text-light-rgb), 0.7); /* dark:text-background-light/70 */
+}
+
+.values-grid {
+  margin-top: 4rem; /* mt-16 */
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+  gap: 2rem; /* gap-8 */
+}
+
+.value-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.value-icon {
+  display: flex;
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: rgba(var(--color-primary-rgb), 0.1); /* bg-primary/10 */
+  color: var(--color-primary); /* text-primary */
+}
+
+.value-icon svg {
+  fill: currentColor;
+  height: 28px;
+  width: 28px;
+}
+
+.value-name {
+  margin-top: 1.5rem; /* mt-6 */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+}
+
+.value-description {
+  margin-top: 0.5rem; /* mt-2 */
+  font-size: 1rem; /* text-base */
+  color: rgba(var(--color-text-dark-rgb), 0.7); /* text-background-dark/70 */
+}
+
+.dark .value-description {
+  color: rgba(var(--color-text-light-rgb), 0.7); /* dark:text-background-light/70 */
+}
+
+/* Responsive styles for Values */
+@media (min-width: 640px) { /* sm: */
+  .values-section {
+    padding-top: 6rem; /* sm:py-24 */
+    padding-bottom: 6rem;
+  }
+  .values-title {
+    font-size: 2.25rem; /* sm:text-4xl */
+    line-height: 2.5rem;
+  }
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* sm:grid-cols-2 */
+  }
+}
+
+@media (min-width: 1024px) { /* lg: */
+  .values-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* lg:grid-cols-4 */
+  }
+}
+
+/* --- Section 4: Why Choose Us --- */
+.why-us-section {
+  padding-top: 4rem; /* py-16 */
+  padding-bottom: 4rem;
+}
+
+.why-us-content {
+  max-width: 56rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.why-us-title {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 700; /* font-bold */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.why-us-paragraph {
+  margin-top: 1.5rem; /* mt-6 */
+  font-size: 1.125rem; /* text-lg */
+  line-height: 2rem; /* leading-8 */
+  color: rgba(var(--color-text-dark-rgb), 0.7); /* text-background-dark/70 */
+}
+
+.dark .why-us-paragraph {
+  color: rgba(var(--color-text-light-rgb), 0.7); /* dark:text-background-light/70 */
+}
+
+/* Responsive styles for Why Us */
+@media (min-width: 640px) { /* sm: */
+  .why-us-section {
+    padding-top: 6rem; /* sm:py-24 */
+    padding-bottom: 6rem;
+  }
+  .why-us-title {
+    font-size: 2.25rem; /* sm:text-4xl */
+    line-height: 2.5rem;
+  }
+}
+
+/* --- Section 5: CTA --- */
+.cta-wrapper {
+  padding-top: 4rem; /* py-16 */
+  padding-bottom: 4rem;
+}
+
+.cta-container {
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: rgba(var(--color-primary-rgb), 0.1); /* bg-primary/10 */
+  padding-top: 4rem; /* py-16 */
+  padding-bottom: 4rem;
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem; /* px-6 */
+  text-align: center;
+}
+
+.dark .cta-container {
+  background-color: rgba(var(--color-primary-rgb), 0.2); /* dark:bg-primary/20 */
+}
+
+.cta-title {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 700; /* font-bold */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.cta-buttons {
+  margin-top: 2rem; /* mt-8 */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* gap-4 */
+}
+
+.btn {
+  display: inline-flex;
+  height: 3rem; /* h-12 */
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem; /* rounded-md */
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem;
+  font-size: 1rem; /* text-base */
+  font-weight: 600; /* font-semibold */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: pre; /* Preserves the spacing from your HTML */
+}
+
+.btn-primary {
+  background-color: var(--color-primary); /* bg-primary */
+  color: #ffffff; /* text-white */
+  transition-property: transform; /* transition-transform */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05); /* hover:scale-105 */
+}
+
+.btn-secondary {
+  border-color: var(--color-primary); /* border-primary */
+  background-color: transparent; /* bg-transparent */
+  color: var(--color-primary); /* text-primary */
+  transition-property: color, background-color; /* transition-colors */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary); /* hover:bg-primary */
+  color: #ffffff; /* hover:text-white */
+}
+
+/* Responsive styles for CTA */
+@media (min-width: 640px) { /* sm: */
+  .cta-wrapper {
+    padding-top: 6rem; /* sm:py-24 */
+    padding-bottom: 6rem;
+  }
+  .cta-title {
+    font-size: 2.25rem; /* sm:text-4xl */
+    line-height: 2.5rem;
+  }
+}
+
+
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+
+      
+/* ================= HEADER ================= */
+.header {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* ================= CONTAINER ================= */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   width: 100%;
+   height: auto;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+/* ================= LOGO ================= */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 70px;
+  width: auto;
+}
+
+
+.search-bar {
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  background: var(--primary-color, #333);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+
+  /* Search bar full-width below header */
+  .search-bar {
+    order: 3;
+    flex: 1 1 100%;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+
+
+
+/* ================= NAV MENU ================= */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-link,
+.dropdown-toggle {
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 15px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+/* Hover & Active states */
+.nav-link:hover,
+.dropdown-toggle:hover {
+  color: #007bff;
+}
+
+.nav-link.active,
+.nav-dropdown.active {
+  color: #007bff;
+}
+
+.nav-link.active::after,
+.nav-dropdown.active::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: #007bff;
+  margin-top: 2px;
+  
+}
+
+/* ================= DROPDOWNS ================= */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  z-index: 999;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.dropdown-content a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Desktop hover */
+.nav-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Dropdown arrow icon */
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown.open .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* ================= WHATSAPP BUTTON ================= */
+.whatsapp-link {
+  background: #ff6b35;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-link:hover {
+  background: #000000;
+  transform: translateY(-2px);
+}
+
+/* ================= TOGGLE (HAMBURGER) ================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+.nav-toggle:focus {
+  outline: none;
+  box-shadow: none;
+}
+.nav-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Hamburger animation -> "X" */
+.nav-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    background-color: #ffffff;
+    padding: 1rem 0;
+    position: fixed;      /* fixed so it overlays page */
+    top: 80px;          
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow-y: auto;    
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 0;
+    z-index: 999;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-link,
+  .dropdown-toggle {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px;
+
+    color: #000000;
+  }
+
+  .dropdown-content {
+    position: static;
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  .dropdown-content a {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #000000;
+  }
+
+  .dropdown-content a:hover {
+    background: #f0f0f0;
+  }
+
+  .whatsapp-link {
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 18px;
+    width: fit-content;
+    margin-left: 20px;
+  }
+}
+
+/* Footer */
+.footer {
+    background: #2c2c2c;;
+    color: rgb(255, 255, 255);
+    padding: 3rem 0 1rem;
+    max-width: 1600px;
+    margin: 0 auto; 
+    padding: 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.footer-section p {
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+
+.footer-section ul li {
+    display: flex; 
+    align-items: flex-start; 
+    margin-bottom: 0.5rem;
+     align-items: center; 
+}
+
+
+.footer-section ul li svg {
+    margin-right: 2px; 
+    height: 1.2em;  
+    width: 1.2;  
+    flex-shrink: 0;  
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #ff6b35;
+}
+ 
+.footer-section p {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 0.5rem;
+}
+
+ 
+.footer-section p svg {
+    margin-right: 10px;  
+    height: 1.2em; 
+    width: 1.2em;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 1rem;
+    text-align: center;
+    color: #999;
+}
+
+
+    </style>
+</head>
+<body>
+     <header class="header" style=" top: 0px;">
+  <div class="nav-container">
+    <!-- Brand -->
+    <div class="nav-brandd">
+      <a href="index.html" class="logo-link">
+        <img src="assets/img/Kripalogo.png" alt="Kripa Home Solutions Logo" class="logo-img" style="height:70px; width:auto;" data-aos="zoom-in-up">
+      </a>
+    </div>
+
+    <!-- Toggle Button (mobile only) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+
+      <!-- Products Dropdown -->
+      <div class="nav-dropdown">
+       <button class="dropdown-toggle">
+    Categories
+    <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#333">
+      <path d="M480-360 280-560h400L480-360Z"/>
+    </svg>
+  </button>
+ <div class="dropdown-content">
+          <a href="Stores/hardware-store.html">Hardware</a>
+          <a href="Stores/paint-store.html">Paints</a>
+          <a href="Stores/kitchen-store.html">Kitchen</a>
+        </div>
+      </div>
+
+      <a href="aboutus.html" class="nav-link active">About Us</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="https://wa.me/919876543210" class="nav-link whatsapp-link" target="_blank">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+const navToggle = document.getElementById("navToggle");
+const navMenu = document.getElementById("navMenu");
+
+navToggle.addEventListener("click", () => {
+  navToggle.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const parent = toggle.parentElement;
+    parent.classList.toggle('open');
+  });
+});
+
+</script>
+ <main>
+  <section class="hero-section">
+    <div class="hero-background" style='background-image: url("assets/img/build2.jpg");'></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <h1 class="hero-title">About Kripa Home Solutions</h1>
+        <p class="hero-subtitle">
+          At Kripa Home Solutions, we're dedicated to transforming houses into homes with innovative and sustainable solutions. Our commitment to quality and customer satisfaction drives everything we do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <h2 class="story-title">Our Story: From Vision to Reality</h2>
+          <p class="story-paragraph">
+            Founded in 20-- by , Kripa Home Solutions began with a simple vision: to provide homeowners with access to the latest in home technology and design. Starting as a
+            small consultancy, we quickly grew into a full-service provider, driven by our passion for innovation and our dedication to customer satisfaction. Today, we're proud to be a
+            leading name in home solutions, known for our quality, reliability, and commitment to excellence.
+          </p>
+        </div>
+        <div class="story-image-wrapper">
+          <img alt="Modern home interior" class="story-image" src="assets/img/build9.jpg"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container">
+      <div class="values-header">
+        <h2 class="values-title">Our Core Values</h2>
+        <p class="values-subtitle">The principles that guide our work and define our commitment to you.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">
+            <svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+              <path d="M239.2,97.29a16,16,0,0,0-13.81-11L166,81.17,142.72,25.81h0a15.95,15.95,0,0,0-29.44,0L90.07,81.17,30.61,86.32a16,16,0,0,0-9.11,28.06L66.61,153.8,53.09,212.34a16,16,0,0,0,23.84,17.34l51-31,51.11,31a16,16,0,0,0,23.84-17.34l-13.51-58.6,45.1-39.36A16,16,0,0,0,239.2,97.29Zm-15.22,5-45.1,39.36a16,16,0,0,0-5.08,15.71L187.35,216v0l-51.07-31a15.9,15.9,0,0,0-16.54,0l-51,31h0L82.2,157.4a16,16,0,0,0-5.08-15.71L32,102.35a.37.37,0,0,1,0-.09l59.44-5.14a16,16,0,0,0,13.35-9.75L128,32.08l23.2,55.29a16,16,0,0,0,13.35,9.75L224,102.26S224,102.32,224,102.33Z"></path>
+            </svg>
+          </div>
+          <h3 class="value-name">Quality</h3>
+          <p class="value-description">We never compromise on the quality of our products and services, ensuring every solution meets the highest standards.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+              <path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path>
+            </svg>
+          </div>
+          <h3 class="value-name">Customer-Centric</h3>
+          <p class="value-description">Our customers are at the heart of everything we do. We strive to exceed their expectations and build lasting relationships.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+              <path d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"></path>
+            </svg>
+          </div>
+          <h3 class="value-name">Innovation</h3>
+          <p class="value-description">We embrace innovation, constantly seeking new and better ways to enhance the home living experience.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+              <path d="M119.76,217.94A8,8,0,0,1,112,224a8.13,8.13,0,0,1-2-.24l-32-8a8,8,0,0,1-2.5-1.11l-24-16a8,8,0,1,1,8.88-13.31l22.84,15.23,30.66,7.67A8,8,0,0,1,119.76,217.94Zm132.69-96.46a15.89,15.89,0,0,1-8,9.25l-23.68,11.84-55.08,55.09a8,8,0,0,1-7.6,2.1l-64-16a8.06,8.06,0,0,1-2.71-1.25L35.86,142.87,11.58,130.73a16,16,0,0,1-7.16-21.46L29.27,59.58h0a16,16,0,0,1,21.46-7.16l22.06,11,53-15.14a8,8,0,0,1,4.4,0l53,15.14,22.06-11a16,16,0,0,1,21.46,7.16l24.85,49.69A15.9,15.9,0,0,1,252.45,121.48Zm-46.18,12.94L179.06,80H147.24L104,122c12.66,8.09,32.51,10.32,50.32-7.63a8,8,0,0,1,10.68-.61l34.41,27.57Zm-187.54-18,17.69,8.85L61.27,75.58,43.58,66.73ZM188,152.66l-27.71-22.19c-19.54,16-44.35,18.11-64.91,5a16,16,0,0,1-2.72-24.82.6.6,0,0,1,.08-.08L137.6,67.06,128,64.32,77.58,78.73,50.21,133.46l49.2,35.15,58.14,14.53Zm49.24-36.24L212.42,66.73l-17.69,8.85,24.85,49.69Z"></path>
+            </svg>
+          </div>
+          <h3 class="value-name">Community Trust</h3>
+          <p class="value-description">We believe in transparency and integrity, building trust with our customers and partners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-us-section">
+    <div class="container">
+      <div class="why-us-content">
+        <h2 class="why-us-title">Why Choose Us?</h2>
+        <p class="why-us-paragraph">
+          Choosing Kripa Home Solutions means choosing a partner committed to your home's success. With our expertise, personalized approach, and unwavering dedication to quality, we ensure
+          your home is equipped with the best solutions for comfort, efficiency, and style.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-wrapper">
+    <div class="container cta-container">
+      <h2 class="cta-title">Ready to Transform Your Home?</h2>
+      <div class="cta-buttons">
+        <button class="btn btn-primary">
+          Explore Our Products
+        </button>
+        <button class="btn btn-secondary">
+          Visit Our Showroom
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+ <footer class="footer">
+        <div class="container">
+         
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kripa Home Solutions</h3>
+                    <p>Your trusted partner for quality hardware and home décor solutions in Kollam, Kerala.</p>
+                    <p>We specialize in providing premium quality products at affordable prices, ensuring every customer gets the best value for their investment in home improvement.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="Stores/hardware-store.html">Products</a></li>
+                        <li><a href="Stores/hardware-store.html">Hardware</a></li>
+                        <li><a href="Stores/kitchen-store.html">Kitchen</a></li>
+                        <li><a href="Stores/paint-store.html">Paints</a></li>
+                  
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Branches</h4>
+                     <ul>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/p7cphN3g3XNhTuUQ8">Our Main Branch</a></li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/ouiWNDZ57jL2GeXWA">Our Paint Store</a></li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><a href="https://maps.app.goo.gl/QuR4ChLmLo3SdTtcA">Our Bath & Kitchen Store</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg> +91 86061 23467</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-440 160-640v400h360v80H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v280h-80v-200L480-440Zm0-80 320-200H160l320 200ZM760-40l-56-56 63-64H600v-80h167l-64-64 57-56 160 160L760-40ZM160-640v440-240 3-283 80Z"/></svg>Kripaelectricalsputhoor@gmail.com</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-200v-440 440-15 15Zm0 80q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v171q-18-13-38-22.5T800-508v-132H160v440h283q3 21 9 41t15 39H160Zm240-600h160v-80H400v80ZM720-40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm20-208v-112h-40v128l86 86 28-28-74-74Z"/></svg>Mon-Sat: 9AM-8PM</p>
+                </div>
+            </div>
+
+      <div class="footer-bottom">
+  <p>&copy; 2025 Kripa Home Solutions. All rights reserved.</p>
+  <hr style="border: 0; height: 1px; background-color: #a9a5a5d9; margin: 8px 0;">
+  <p style="color:#007BFF; font-weight:500;">
+    Designed & Developed by 
+    <a href="" target="_blank" style="color:#007BFF; text-decoration:none;">
+      DevMaxStudio
+    </a>
+  </p>
+</div>
+        </div>
+    </footer>
+</body>
+</html>
