@@ -513,6 +513,34 @@ background: transparent;
   ==========================================================================
 */
 
+/* --- Hero Section Loading State --- */
+
+.home-hero-section.is-loading .home-hero-background {
+  /* Hide the actual background image initially */
+  background-image: none !important; /* Override inline style */
+  
+  /* Show a plain dark background as placeholder */
+  background-color: #101c22; /* Approx match to your gradient */
+  
+  /* Make the transition smooth */
+  opacity: 0; 
+  transition: opacity 0.5s ease-in-out; 
+}
+
+/* When loading is finished, fade the background in */
+.home-hero-section:not(.is-loading) .home-hero-background {
+  opacity: 1;
+}
+
+/* Optional: Slightly fade the text content while image loads */
+.home-hero-section.is-loading .home-hero-content {
+  opacity: 0.8;
+  transition: opacity 0.5s ease-in-out;
+}
+.home-hero-section:not(.is-loading) .home-hero-content {
+  opacity: 1;
+}
+
   .home-hero-section {
     position: relative;
     min-height: 100vh;
@@ -749,6 +777,97 @@ background: transparent;
      2. Main Categories Section
     ==========================================================================
     */
+
+
+    /* --- Basic Skeleton Styles (Reuse from previous example) --- */
+.skeleton {
+  background-color: #e0e0e0; /* Light grey */
+  border-radius: 4px; /* Default */
+  position: relative;
+  overflow: hidden; /* Needed for animation */
+}
+
+/* Shimmer Animation (Reuse from previous example) */
+.skeleton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  height: 100%;
+  width: 150%;
+  background: linear-gradient(to right, transparent 0%, #ededed 50%, transparent 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+/* --- Specific Category Skeleton Styles --- */
+.skeleton-image {
+  /* Make it fill the image wrapper */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Match the circular image wrapper */
+  position: absolute; /* Position it inside the wrapper */
+  top: 0;
+  left: 0;
+}
+
+.category-card-image-wrapper {
+  position: relative; /* Needed to contain the absolute skeleton */
+}
+
+
+/* --- Controlling Visibility --- */
+
+/* Initially hide the real image, show the skeleton */
+.is-loading .category-card-image.REAL-CONTENT {
+  opacity: 0; /* Use opacity for smoother transition */
+  transition: opacity 0.3s ease-in-out;
+}
+.is-loading .skeleton-image {
+  display: block; /* Show the skeleton */
+  opacity: 1;
+}
+
+/* When loading is done, show the real image, hide the skeleton */
+section:not(.is-loading) .category-card-image.REAL-CONTENT {
+  opacity: 1; /* Fade in the real image */
+}
+section:not(.is-loading) .skeleton-image {
+  display: none; /* Hide the skeleton */
+}
+
+/* --- Product Category Card Loading State --- */
+
+/* Style the placeholder background */
+#product-categories-section.is-loading .card-background {
+  /* Hide the actual background image */
+  background-image: none !important; /* Override inline style */
+  
+  /* Show a plain light grey placeholder */
+  background-color: #e0e0e0; 
+  
+  /* Prepare for fade-in */
+  opacity: 0; 
+  transition: opacity 0.5s ease-in-out; 
+}
+
+/* When loading is finished, fade the background image in */
+#product-categories-section:not(.is-loading) .card-background {
+  opacity: 1;
+}
+
+/* Optional: Slightly dim the card content while image loads */
+#product-categories-section.is-loading .card-content {
+  opacity: 0.7;
+  transition: opacity 0.5s ease-in-out;
+}
+#product-categories-section:not(.is-loading) .card-content {
+  opacity: 1;
+}
 
     .categories-container {
       width: 100%;
