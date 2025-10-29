@@ -93,7 +93,7 @@
     <main>
         <!-- Hero Section -->
 <section class="home-hero-section">
-  <div class="home-hero-background"
+ <div id="hero-background-div" class="home-hero-background"
     style='background-image: linear-gradient(rgba(16, 28, 34, 0.6) 0%, rgba(16, 28, 34, 0.9) 100%), url("assets/img/build1.jpg");'>
   </div>
 
@@ -164,206 +164,237 @@
   </div>
 </section> -->
 
-  <section class="categories-section">
+ <section id="categories-section" class="categories-section is-loading">
+  <div class="categories-container">
+    <div class="header-content" data-aos="zoom-in-up">
+      <h2 class="header-title">Shop By Categories</h2>
+      <p class="header-subtitle">
+        Explore a wide range of products, exclusive deals, and personalized services designed to bring comfort, style, and quality to your home.
+      </p>
+    </div>
 
-    <div class="categories-container">
-
- <div class="header-content" data-aos="zoom-in-up">
-            <h2 class="header-title">
-               Shop By Categories
-            </h2>
-            <p class="header-subtitle">
-          Explore a wide range of products, exclusive deals, and personalized services designed to bring comfort, style, and quality to your home.
-        </p>
-        </div>
-
-      <section class="category-row">
-        <div class="category-header">
-          <h2 class="header-title">Hardware</h2> 
-          <div class="category-controls">
-            <a class="category-view-all" href="Stores/hardware-store.html">View All</a>
-            <div class="category-nav-buttons">
-              <button id="hardware-left" class="category-scroll-btn">
-                <span class="material-symbols-outlined">chevron_left</span>
-              </button>
-              <button id="hardware-right" class="category-scroll-btn">
-                <span class="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
+    <section class="category-row">
+      <div class="category-header">
+        <h2 class="header-title">Hardware</h2>
+        <div class="category-controls">
+          <a class="category-view-all" href="Stores/hardware-store.html">View All</a>
+          <div class="category-nav-buttons">
+            <button id="hardware-left" class="category-scroll-btn">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button id="hardware-right" class="category-scroll-btn">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
           </div>
         </div>
-        <div class="category-gallery-wrapper" id="hardwareGallery">
-          <div id="hardware-scroll" class="category-gallery-scroll">
-            
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Ceiling Fans" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGU-COisb8H8bMFI9FQAHndgYruIRHq3GyQ7XrIuAFyFPzCgiRCGJa6I9msJh2Kk4tnpR7ykG-IbSRGxosUprMybCGVUVtIo8-2bJ76e5lsAwLzJik6UTXwbTNGfXnB9A_pQ-leuNFrrAq91VvlTNkASHxq20HXMO2ZbebkDvC92kYCQEQNJ018ygS47kNXLNfkkIPkq3jxF63tdZxiLTzeM_C7NfsYEWd8dvZ2GnMizAMF1gNcBEqO7tuNUD9LKVSKYIyAEwsjyY"/>
-              </div>
-              <h3 class="category-card-title">Ceiling Fans</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
+      </div>
+      <div class="category-gallery-wrapper" id="hardwareGallery">
+        <div id="hardware-scroll" class="category-gallery-scroll">
 
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Modular Switches" class="category-card-image" src="assets/img/categories/ModularSwitches.png"/>
-              </div>
-              <h3 class="category-card-title">Modular Switches</h3>
-              <a class="category-card-link" href="#">View More</a>
+          <div class="category-card">
+            <div class="category-card-image-wrapper">
+              <div class="skeleton skeleton-image"></div>
+              <img alt="Ceiling Fans" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGU-COisb8H8bMFI9FQAHndgYruIRHq3GyQ7XrIuAFyFPzCgiRCGJa6I9msJh2Kk4tnpR7ykG-IbSRGxosUprMybCGVUVtIo8-2bJ76e5lsAwLzJik6UTXwbTNGfXnB9A_pQ-leuNFrrAq91VvlTNkASHxq20HXMO2ZbebkDvC92kYCQEQNJ018ygS47kNXLNfkkIPkq3jxF63tdZxiLTzeM_C7NfsYEWd8dvZ2GnMizAMF1gNcBEqO7tuNUD9LKVSKYIyAEwsjyY"/>
             </div>
-
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Wires & Cables" class="category-card-image" src="assets/img/categories/wireroll.png"/>
-              </div>
-              <h3 class="category-card-title">Wires & Cables</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Sanitaryware" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVreIHktOOoGSqKUIyBHhuYjIN9VpFNgSbeFkLrT0kfId_c4ZquoS8eayS9HxrSiF_APq7gYKEzcJxS09c2r1Ny7JiQQw5HsMU8Rmd7wORS7f_wYauBTsZAvfn5lK1ZISQ9DzEaaPz1fSQ7E47QJ-CNN9l5CmuTbsKIe3OipbYk45PWGo7mRAHh4QKjtc014cA6l_bpMnpz4sPjcQ8PjCfcleez2etpo8VC2UAORub5QGrNKDvZJfkD6FZMshHvkKD-ITgEpuZYB8"/>
-              </div>
-              <h3 class="category-card-title">Sanitaryware</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Ceiling Lights" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcFLHM933hYGbb_8JDSiPvCmoh6JGSplwv6maTuiN0GWascUjiKFs_E2DaP4hLYZhWxU22jGVYT0XdCbKmUo1xl3boegL1Ly1SdKO5uIUKz2onFt4LsJL5x46Xojv2FQRPVW814NGA3OVSMPy8Ce5AR81j-wFTajI0RouAxULnz0LRGj9Tq84Fh_lBrPDaKjsIQOiGZ4RNOIVH2CAlFL6IwwjO-Lf31aqAn2nCqDLvtsk5s8H6LbWZWTlIf97qb83zuP39Q9ryhc"/>
-              </div>
-              <h3 class="category-card-title">Ceiling Lights</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Water Heaters" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOHnCj4WSgzYeewURJW_QyxkP2OYU-74dSml6IoBllZ7wEbSZg_ieIS0WDtyQsSE5Qqj9IUAEMcnkm5q1lGq722LTmBKrdSpdB-lSiBk5VCl-jTotNU0zq3KCfsfl44pj5zSN6JVPwv0gwvwU0LVOZVRTSK99yBSCYC-jqO2HijruXqrNxYPv9F5jw6bygE_96ZMfxlyfp_SjeeMC0-1jKwcZ-3gCk0wl24xtcA60NIz88PqqKenBNcHscDcSSSGsO26mV6JNB_Nc"/>
-              </div>
-              <h3 class="category-card-title">Water Heaters</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Pipes & Fittings" class="category-card-image" src="assets/img/categories/Pipes&Fittings.png"/>
-              </div>
-              <h3 class="category-card-title">Pipes & Fittings</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
+            <h3 class="category-card-title">Ceiling Fans</h3>
+            <a class="category-card-link" href="#">View More</a>
           </div>
-        </div>
-      </section>
 
-      <section class="category-row">
-        <div class="category-header">
+          <div class="category-card">
+            <div class="category-card-image-wrapper">
+               <div class="skeleton skeleton-image"></div>
+               <img alt="Modular Switches" class="category-card-image REAL-CONTENT" src="assets/img/categories/ModularSwitches.png"/>
+            </div>
+            <h3 class="category-card-title">Modular Switches</h3>
+            <a class="category-card-link" href="#">View More</a>
+          </div>
+
+          <div class="category-card">
+             <div class="category-card-image-wrapper">
+               <div class="skeleton skeleton-image"></div>
+               <img alt="Wires & Cables" class="category-card-image REAL-CONTENT" src="assets/img/categories/wireroll.png"/>
+            </div>
+             <h3 class="category-card-title">Wires & Cables</h3>
+             <a class="category-card-link" href="#">View More</a>
+           </div>
+
+           <div class="category-card">
+             <div class="category-card-image-wrapper">
+               <div class="skeleton skeleton-image"></div>
+               <img alt="Sanitaryware" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVreIHktOOoGSqKUIyBHhuYjIN9VpFNgSbeFkLrT0kfId_c4ZquoS8eayS9HxrSiF_APq7gYKEzcJxS09c2r1Ny7JiQQw5HsMU8Rmd7wORS7f_wYauBTsZAvfn5lK1ZISQ9DzEaaPz1fSQ7E47QJ-CNN9l5CmuTbsKIe3OipbYk45PWGo7mRAHh4QKjtc014cA6l_bpMnpz4sPjcQ8PjCfcleez2etpo8VC2UAORub5QGrNKDvZJfkD6FZMshHvkKD-ITgEpuZYB8"/>
+            </div>
+             <h3 class="category-card-title">Sanitaryware</h3>
+             <a class="category-card-link" href="#">View More</a>
+           </div>
+           
+           <div class="category-card">
+             <div class="category-card-image-wrapper">
+               <div class="skeleton skeleton-image"></div>
+               <img alt="Ceiling Lights" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcFLHM933hYGbb_8JDSiPvCmoh6JGSplwv6maTuiN0GWascUjiKFs_E2DaP4hLYZhWxU22jGVYT0XdCbKmUo1xl3boegL1Ly1SdKO5uIUKz2onFt4LsJL5x46Xojv2FQRPVW814NGA3OVSMPy8Ce5AR81j-wFTajI0RouAxULnz0LRGj9Tq84Fh_lBrPDaKjsIQOiGZ4RNOIVH2CAlFL6IwwjO-Lf31aqAn2nCqDLvtsk5s8H6LbWZWTlIf97qb83zuP39Q9ryhc"/>
+            </div>
+             <h3 class="category-card-title">Ceiling Lights</h3>
+             <a class="category-card-link" href="#">View More</a>
+           </div>
+           
+           <div class="category-card">
+             <div class="category-card-image-wrapper">
+               <div class="skeleton skeleton-image"></div>
+               <img alt="Water Heaters" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOHnCj4WSgzYeewURJW_QyxkP2OYU-74dSml6IoBllZ7wEbSZg_ieIS0WDtyQsSE5Qqj9IUAEMcnkm5q1lGq722LTmBKrdSpdB-lSiBk5VCl-jTotNU0zq3KCfsfl44pj5zSN6JVPwv0gwvwU0LVOZVRTSK99yBSCYC-jqO2HijruXqrNxYPv9F5jw6bygE_96ZMfxlyfp_SjeeMC0-1jKwcZ-3gCk0wl24xtcA60NIz88PqqKenBNcHscDcSSSGsO26mV6JNB_Nc"/>
+            </div>
+             <h3 class="category-card-title">Water Heaters</h3>
+             <a class="category-card-link" href="#">View More</a>
+           </div>
+           
+           <div class="category-card">
+             <div class="category-card-image-wrapper">
+               <div class="skeleton skeleton-image"></div>
+               <img alt="Pipes & Fittings" class="category-card-image REAL-CONTENT" src="assets/img/categories/Pipes&Fittings.png"/>
+            </div>
+             <h3 class="category-card-title">Pipes & Fittings</h3>
+             <a class="category-card-link" href="#">View More</a>
+           </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="category-row">
+      <div class="category-header">
+
           <h2 class="header-title">Kitchen</h2>
           <div class="category-controls">
+
             <a class="category-view-all" href="Stores/kitchen-store.html">View All</a>
+
             <div class="category-nav-buttons">
+
               <button id="kitchen-left" class="category-scroll-btn">
+
                 <span class="material-symbols-outlined">chevron_left</span>
+
               </button>
+
               <button id="kitchen-right" class="category-scroll-btn">
+
                 <span class="material-symbols-outlined">chevron_right</span>
+
               </button>
+
             </div>
-          </div>
         </div>
-        <div class="category-gallery-wrapper">
-          <div id="kitchen-scroll" class="category-gallery-scroll">
-            
-            <div class="category-card">
+       </div>
+      
+       <div class="category-gallery-wrapper">
+         <div id="kitchen-scroll" class="category-gallery-scroll">
+           <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Kitchen Chimneys" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc4EYaLMUEQdYbQYKz7IEuedeC19F-1GX_2JGnJRF1UUFXP1EnudwB_H9UiyKbr4Ndy837OdjxzHdM5lFEf1sYcLhd1NCVt3Uq3nlwroCdOuDPOSKI44Qn8INcp5giYrT3YS6DTohYqy8PizCnTMfk66rgjKmM-0NOmI9dyMIch0EiRQCdwA-NmqiRn4jVgKAqhJDMQEEphAHmmB3R8VN54Eh6Nt9JfwKOe1FYRTMjUAKnLBBdgEW2rczoA14K4-WfQQTPue3PYX8"/>
-              </div>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Kitchen Chimneys" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc4EYaLMUEQdYbQYKz7IEuedeC19F-1GX_2JGnJRF1UUFXP1EnudwB_H9UiyKbr4Ndy837OdjxzHdM5lFEf1sYcLhd1NCVt3Uq3nlwroCdOuDPOSKI44Qn8INcp5giYrT3YS6DTohYqy8PizCnTMfk66rgjKmM-0NOmI9dyMIch0EiRQCdwA-NmqiRn4jVgKAqhJDMQEEphAHmmB3R8VN54Eh6Nt9JfwKOe1FYRTMjUAKnLBBdgEW2rczoA14K4-WfQQTPue3PYX8"/>
+             </div>
               <h3 class="category-card-title">Kitchen Chimneys</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Gas Stoves" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgcJ9mG4Tgg2HUg0yplWBLByUqzD-yF04g6fv2sfel6HPXLr6pNBPbIFb8rWiGt4we9_5CwJQHYmeYwcafIBg-ksIR-hqLIfjuvxSSoMhH_s6Yhmlq9ZaGM_8if4Eqcj8ZlkaMdu0M46yQhgkDavvHOptZGcTFkXwQDsFNG3jo-VE5UxS420xJzVogv1zGixCSy2fYGcgqnFaam5eu3fDIEzEtYlkVPFyftCIlj1TSyqmCrZxqHKZYNi3VbKHfPeyfU7nSz7lG1BY"/>
-              </div>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Gas Stoves" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgcJ9mG4Tgg2HUg0yplWBLByUqzD-yF04g6fv2sfel6HPXLr6pNBPbIFb8rWiGt4we9_5CwJQHYmeYwcafIBg-ksIR-hqLIfjuvxSSoMhH_s6Yhmlq9ZaGM_8if4Eqcj8ZlkaMdu0M46yQhgkDavvHOptZGcTFkXwQDsFNG3jo-VE5UxS420xJzVogv1zGixCSy2fYGcgqnFaam5eu3fDIEzEtYlkVPFyftCIlj1TSyqmCrZxqHKZYNi3VbKHfPeyfU7nSz7lG1BY"/>
+             </div>
               <h3 class="category-card-title">Gas Stoves</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Kitchen Sinks" class="category-card-image" src="assets/img/categories/waterpurifies.png"/>
-              </div>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Kitchen Sinks" class="category-card-image REAL-CONTENT" src="assets/img/categories/waterpurifies.png"/>
+             </div>
               <h3 class="category-card-title">Kitchen Sinks</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Kitchen Countertops" class="category-card-image" src="assets/img/categories/waterpurifies.png"/>
-              </div>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Kitchen Countertops" class="category-card-image REAL-CONTENT" src="assets/img/categories/waterpurifies.png"/>
+             </div>
               <h3 class="category-card-title">Kitchen Countertops</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Water Purifiers" class="category-card-image" src="assets/img/categories/waterpurifies.png"/>
-              </div>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Water Purifiers" class="category-card-image REAL-CONTENT" src="assets/img/categories/waterpurifies.png"/>
+             </div>
               <h3 class="category-card-title">Water Purifiers</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-    
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Kitchen Lighting" class="category-card-image" src="assets/img/categories/dishwashers.png"/>
-              </div>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Kitchen Lighting" class="category-card-image REAL-CONTENT" src="assets/img/categories/Dishwashers.png"/>
+             </div>
               <h3 class="category-card-title">Kitchen Lighting</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Dishwashers 2" class="category-card-image" src="assets/img/categories/dishwashers.png"/>
-              </div>
-              <h3 class="category-card-title">Dishwashers</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
-              <div class="category-card">
-              <div class="category-card-image-wrapper">
-                <img alt="Dishwashers 2" class="category-card-image" src="assets/img/categories/dishwashers.png"/>
-              </div>
-              <h3 class="category-card-title">Dishwashers</h3>
-              <a class="category-card-link" href="#">View More</a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section id="paint-section" class="category-row">
-        <div class="category-header">
-          <h2 class="header-title">Paint</h2>
-          <div class="category-controls">
-            <a class="category-view-all" href="Stores/paint-store.html">View All</a>
-            <div class="category-nav-buttons">
-              <button id="paint-left" class="category-scroll-btn">
-                <span class="material-symbols-outlined">chevron_left</span>
-              </button>
-              <button id="paint-right" class="category-scroll-btn">
-                <span class="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="category-gallery-wrapper">
-          <div id="paint-scroll" class="category-gallery-scroll">
             
             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Interior Wall Paint" class="category-card-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz3W27HlsiA85EKZm8BHrLnpkAT0MiuG68oeMLcRcndpZMc3Kby5S7Dx1AdmaB8aOuJfminMpS22cjNgHTQaLHsuYxlu_O3T35V5eg30lHOSzXlmClzHae9Bxxwz8aywzwA7nBftKt1nclN4ikjpJHamuuN-L2rw2La_Zu3YtcAWCyZxHX5eWXs2eAiFMLnGlViEwFHid2W3JB62NoXbb_EGTyKk2bRlRycg5lL_FN9NtQPJaKZUguHvscQwP59loZQ52lvSspkKk"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Dishwashers 2" class="category-card-image REAL-CONTENT" src="assets/img/categories/Dishwashers.png"/>
+             </div>
+              <h3 class="category-card-title">Dishwashers</h3>
+              <a class="category-card-link" href="#">View More</a>
+            </div>
+
+            <div class="category-card">
+              <div class="category-card-image-wrapper">
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Dishwashers 2" class="category-card-image REAL-CONTENT" src="assets/img/categories/Dishwashers.png"/>
+             </div>
+              <h3 class="category-card-title">Dishwashers</h3>
+              <a class="category-card-link" href="#">View More</a>
+            </div>
+         </div>
+       </div>
+    </section>
+
+    <section id="paint-section" class="category-row">
+        <div class="category-header">
+
+          <h2 class="header-title">Paint</h2>
+
+          <div class="category-controls">
+
+            <a class="category-view-all" href="Stores/paint-store.html">View All</a>
+
+            <div class="category-nav-buttons">
+
+              <button id="paint-left" class="category-scroll-btn">
+
+                <span class="material-symbols-outlined">chevron_left</span>
+
+              </button>
+
+              <button id="paint-right" class="category-scroll-btn">
+
+                <span class="material-symbols-outlined">chevron_right</span>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+       <div class="category-gallery-wrapper">
+         <div id="paint-scroll" class="category-gallery-scroll">
+            <div class="category-card">
+              <div class="category-card-image-wrapper">
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Interior Wall Paint" class="category-card-image REAL-CONTENT" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz3W27HlsiA85EKZm8BHrLnpkAT0MiuG68oeMLcRcndpZMc3Kby5S7Dx1AdmaB8aOuJfminMpS22cjNgHTQaLHsuYxlu_O3T35V5eg30lHOSzXlmClzHae9Bxxwz8aywzwA7nBftKt1nclN4ikjpJHamuuN-L2rw2La_Zu3YtcAWCyZxHX5eWXs2eAiFMLnGlViEwFHid2W3JB62NoXbb_EGTyKk2bRlRycg5lL_FN9NtQPJaKZUguHvscQwP59loZQ52lvSspkKk"/>
               </div>
               <h3 class="category-card-title">Interior Wall Paints</h3>
               <a class="category-card-link" href="#">View More</a>
@@ -371,65 +402,73 @@
 
             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Exterior Paint" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Exterior Paint" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Exterior Wall Paints</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Metal Paints" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Metal Paints" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Metal Paints</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Wood Coatings" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Wood Coatings" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Wood Coatings</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
+            
             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Luxury Finish" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Luxury Finish" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Luxury Finish</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
+            
             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Spray Guns" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Spray Guns" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Spray Guns</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Paint Brushes" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Paint Brushes" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Paint Brushes</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
-
-            <div class="category-card">
+            
+             <div class="category-card">
               <div class="category-card-image-wrapper">
-                <img alt="Waterproofing Solutions" class="category-card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
+                <div class="skeleton skeleton-image"></div>
+                <img alt="Waterproofing Solutions" class="category-card-image REAL-CONTENT" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60"/>
               </div>
               <h3 class="category-card-title">Waterproofing Solutions</h3>
               <a class="category-card-link" href="#">View More</a>
             </div>
+         </div>
+       </div>
+    </section>
 
-          </div>
-        </div>
-      </section>
-    </div>
-  </section>
+  </div>
+</section>
+
 
   <script>
     const sections = ["hardware", "kitchen", "paint"];
@@ -452,16 +491,10 @@
   </script>
 
 
-</div>
-</div>
-
-</section>  
-
-
-<section style="padding-top: 4rem; padding-bottom: 4rem; background-color: #f8f6f5; font-family: 'Work Sans', sans-serif; color: #181210;">
+<section id="product-categories-section" class="is-loading" style="padding-top: 4rem; padding-bottom: 4rem; background-color: #f8f6f5; font-family: 'Work Sans', sans-serif; color: #181210;">
     <div class="categories-container">
 
-        <div class="header-content"  data-aos="zoom-in-up">
+        <div class="header-content" data-aos="zoom-in-up">
             <h2 class="header-title">
                 Explore Our Product Categories
             </h2>
@@ -475,7 +508,7 @@
 
             <div class="category-car">
                 <a href="Stores/hardware-store.html" class="absolute inset-0 z-10" aria-label="View Hardware & Tools"></a>
-                <div class="card-background" style='background-image: url("https://thumbs.dreamstime.com/b/plumbing-materials-tools-white-workbench-top-view-sample-horizontal-composition-246815656.jpg");'>
+                <div id="category-bg-hardware" class="card-background" style='background-image: url("https://thumbs.dreamstime.com/b/plumbing-materials-tools-white-workbench-top-view-sample-horizontal-composition-246815656.jpg");'>
                 </div>
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -495,7 +528,7 @@
 
             <div class="category-car">
                 <a href="Stores/kitchen-store.html" class="absolute inset-0 z-10" aria-label="View Kitchen Supplies"></a>
-                <div class="card-background" style='background-image: url("https://media.architecturaldigest.com/photos/55e76fc0302ba71f3016c31c/master/w_320,c_limit/dam-images-decor-2015-01-sleek-kitchens-contemporary-kitchen-inspiration-17.jpg");'>
+                <div id="category-bg-kitchen" class="card-background" style='background-image: url("https://media.architecturaldigest.com/photos/55e76fc0302ba71f3016c31c/master/w_320,c_limit/dam-images-decor-2015-01-sleek-kitchens-contemporary-kitchen-inspiration-17.jpg");'>
                 </div>
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -515,7 +548,7 @@
 
             <div class="category-car">
                 <a href="Stores/paint-store.html" class="absolute inset-0 z-10" aria-label="View Painting Solutions"></a>
-                <div class="card-background" style='background-image: url("assets/img/categories/paintingsolutions.png");'>
+                <div id="category-bg-paint" class="card-background" style='background-image: url("assets/img/categories/paintingsolutions.png");'>
                 </div>
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -692,7 +725,9 @@
                             <div class="embla__slide">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Grohe.svg/375px-Grohe.svg.png" alt="Brand 6">
                             </div>
-                    
+                            <!-- <div class="embla__slide">
+                                <img src="https://cdn.brandfetch.io/idIgpxgnOl/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1749040189777" alt="Brand 2">
+                            </div> -->
                             <div class="embla__slide">
                                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Legrand.svg/1920px-Legrand.svg.png?20091220174938" alt="Brand 2">
                             </div>
@@ -1140,6 +1175,7 @@ function scrollReels(direction) {
   </a>
 </ul>
   </div>
+  <script async src="//www.instagram.com/embed.js"></script>
 </section>
 
 </main>
