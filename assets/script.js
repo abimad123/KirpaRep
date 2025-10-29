@@ -428,3 +428,99 @@ if (emblaNode && typeof EmblaCarousel === 'function') {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. HERO BACKGROUND IMAGE LOADER ---
+    const heroSection = document.getElementById('hero-section');
+    const heroBackgroundDiv = document.getElementById('hero-background-div');
+
+    if (heroSection && heroBackgroundDiv) {
+        const bgStyle = heroBackgroundDiv.style.backgroundImage;
+        const urlMatch = bgStyle.match(/url\("?(.+?)"?\)/);
+
+        if (urlMatch && urlMatch[1]) {
+            const imageUrl = urlMatch[1];
+            const img = new Image();
+            img.onload = () => {
+                console.log("Hero background image loaded.");
+                heroSection.classList.remove('is-loading');
+            };
+            img.onerror = () => {
+                console.error("Hero background image failed to load.");
+                heroSection.classList.remove('is-loading'); 
+            };
+            img.src = imageUrl;
+        } else {
+            console.warn("Could not extract hero background image URL.");
+            heroSection.classList.remove('is-loading');
+        }
+    }
+
+    // --- 2. CATEGORY IMAGE LOADER ---
+    const categoriesSection = document.getElementById('categories-section');
+
+    if (categoriesSection) {
+        const images = categoriesSection.querySelectorAll('.category-card-image.REAL-CONTENT');
+        if (images.length === 0) {
+            categoriesSection.classList.remove('is-loading');
+        } else {
+            let loadedCount = 0;
+            const checkAllImagesLoaded = () => {
+                loadedCount++;
+                if (loadedCount === images.length) {
+                    console.log("All category images loaded.");
+                    categoriesSection.classList.remove('is-loading');
+                }
+            };
+            images.forEach(img => {
+                if (img.complete) {
+                    checkAllImagesLoaded();
+                } else {
+                    img.addEventListener('load', checkAllImagesLoaded);
+                    img.addEventListener('error', () => {
+                        console.error(`Category image failed to load: ${img.src}`);
+                        checkAllImagesLoaded();
+                    });
+                }
+            });
+        }
+    }
+
+    // --- 3. PRODUCT CATEGORY IMAGE LOADER ---
+    const productCategoriesSection = document.getElementById('product-categories-section'); // Renamed variable for clarity
+
+    if (productCategoriesSection) {
+        const backgroundDivs = productCategoriesSection.querySelectorAll('.card-background');
+        if (backgroundDivs.length === 0) {
+            productCategoriesSection.classList.remove('is-loading');
+        } else {
+            let loadedCount = 0;
+            const totalImages = backgroundDivs.length;
+            const checkAllImagesLoaded = () => {
+                loadedCount++;
+                if (loadedCount === totalImages) {
+                    console.log("All product category background images loaded.");
+                    productCategoriesSection.classList.remove('is-loading');
+                }
+            };
+            backgroundDivs.forEach(div => {
+                const bgStyle = div.style.backgroundImage;
+                const urlMatch = bgStyle.match(/url\("?(.+?)"?\)/);
+                if (urlMatch && urlMatch[1]) {
+                    const imageUrl = urlMatch[1];
+                    const img = new Image();
+                    img.onload = checkAllImagesLoaded;
+                    img.onerror = () => {
+                        console.error(`Category background image failed to load: ${imageUrl}`);
+                        checkAllImagesLoaded(); 
+                    };
+                    img.src = imageUrl;
+                } else {
+                    console.warn("Could not extract category background image URL from div:", div.id);
+                    checkAllImagesLoaded(); 
+                }
+            });
+        }
+    }
+
+});
