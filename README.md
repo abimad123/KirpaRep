@@ -56,7 +56,7 @@ Developed with **HTML**, **CSS**, **JavaScript**, and **Firebase**, this project
 
 ## Preview
 
-![Kirpa Home Solutions Screenshot](assets\img\Kripalogo.png)
+![Kirpa Home Solutions Screenshot](assets/img/Kripalogo.png)
 
 ---
 
