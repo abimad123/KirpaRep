@@ -49,22 +49,22 @@ Developed with **HTML**, **CSS**, **JavaScript**, and **Firebase**, this project
 
 ##  Live Demo
 
-🔗 **Website:** [https://kripahomesolutions.vercel.app](https://kripahomesolutions.vercel.app)  
-💻 **Repository:** [https://github.com/abimad123/KirpaRep](https://github.com/abimad123/KirpaRep)
+ **Website:** [https://kripahomesolutions.vercel.app](https://kripahomesolutions.vercel.app)  
+ **Repository:** [https://github.com/abimad123/KirpaRep](https://github.com/abimad123/KirpaRep)
 
 ---
 
 ## Preview
 
-![Kirpa Home Solutions Screenshot](assests/img/project/kripa.png)
+![Kirpa Home Solutions Screenshot](assets\img\Kripalogo.png)
 
 ---
 
 ##  Author
 
 **Abijith C G**  
-💼 UI/UX Designer & Full Stack Web Developer  
-🔗 [Portfolio](https://abijithportfolio.vercel.app) | [LinkedIn](https://www.linkedin.com/in/abijith-c-g) | [GitHub](https://github.com/abimad123)
+ UI/UX Designer & Full Stack Web Developer  
+ [Portfolio](https://abijithportfolio.vercel.app) | [LinkedIn](https://www.linkedin.com/in/abijith-c-g) | [GitHub](https://github.com/abimad123)
 
 ---
 
